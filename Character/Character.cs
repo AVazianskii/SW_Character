@@ -135,7 +135,7 @@ namespace Character_design
         {
             Saved_state = true;
         }
-        public void Change_character_parameter()
+        public void Change_character_state_to_unsave()
         {
             Saved_state = false;
         }
