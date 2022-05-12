@@ -69,6 +69,13 @@ namespace Character_design
             }
             return Character_instance;
         }
+        public void Delete_character()
+        {
+            if (Character_instance != null)
+            {
+                Character_instance = null;
+            }
+        }
         public void Spend_exp_points(int cost)
         {
             Experience_sold = Experience_sold + cost;
