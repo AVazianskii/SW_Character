@@ -131,6 +131,15 @@ namespace Character_design
                 skill.Score = 0;
             }
         }
+        public void Save_character_to_excel_card()
+        {
+            Saved_state = true;
+        }
+        public void Change_character_parameter()
+        {
+            Saved_state = false;
+        }
+
 
 
 
