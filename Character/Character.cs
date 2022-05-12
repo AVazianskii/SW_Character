@@ -37,6 +37,8 @@ namespace Character_design
                      is_jedi,
                      is_neutral;
 
+        private bool saved_state;
+
         private int experience,
                     experience_left,
                     experience_sold,
@@ -267,23 +269,28 @@ namespace Character_design
             get { return is_neutral; }
             set { is_neutral = value; OnPropertyChanged("Is_neutral"); }
         }
+        public bool Saved_state
+        {
+            get { return saved_state; }
+            set { saved_state = value; OnPropertyChanged("Saved_state"); }
+        }
 
 
 
         public Character()
         {
-            Character_race = Main_model.GetInstance().Race_Manager.Get_Race_list()[0];
-            Age_status = Main_model.GetInstance().Age_status_Manager.Age_Statuses()[0]; // устанавливаем возрастной статус "Неизвестно" персонажу
-            Range = Main_model.GetInstance().Range_Manager.Ranges()[0]; // устанавливаем ранг "Рядовой" персонажу
+            Character_race  = Main_model.GetInstance().Race_Manager.Get_Race_list()[0];
+            Age_status      = Main_model.GetInstance().Age_status_Manager.Age_Statuses()[0]; // устанавливаем возрастной статус "Неизвестно" персонажу
+            Range           = Main_model.GetInstance().Range_Manager.Ranges()[0]; // устанавливаем ранг "Рядовой" персонажу
 
-            Strength = Main_model.GetInstance().Attribute_Manager.Get_strength();
-            Agility = Main_model.GetInstance().Attribute_Manager.Get_agility();
-            Stamina = Main_model.GetInstance().Attribute_Manager.Get_stamina();
-            Quickness = Main_model.GetInstance().Attribute_Manager.Get_quickness();
-            Perception = Main_model.GetInstance().Attribute_Manager.Get_perception();
-            Intelligence = Main_model.GetInstance().Attribute_Manager.Get_intelligence();
-            Charm = Main_model.GetInstance().Attribute_Manager.Get_charm();
-            Willpower = Main_model.GetInstance().Attribute_Manager.Get_willpower();
+            Strength        = Main_model.GetInstance().Attribute_Manager.Get_strength();
+            Agility         = Main_model.GetInstance().Attribute_Manager.Get_agility();
+            Stamina         = Main_model.GetInstance().Attribute_Manager.Get_stamina();
+            Quickness       = Main_model.GetInstance().Attribute_Manager.Get_quickness();
+            Perception      = Main_model.GetInstance().Attribute_Manager.Get_perception();
+            Intelligence    = Main_model.GetInstance().Attribute_Manager.Get_intelligence();
+            Charm           = Main_model.GetInstance().Attribute_Manager.Get_charm();
+            Willpower       = Main_model.GetInstance().Attribute_Manager.Get_willpower();
 
             skills = new List<Skill_Class>();
             foreach (Skill_Class Skill in Main_model.GetInstance().Skill_Manager.Get_skills())
@@ -297,6 +304,7 @@ namespace Character_design
                 force_skills.Add(force_skill);
             }
 
+            Saved_state = false;
             Forceuser = false;
         }
 
