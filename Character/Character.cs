@@ -17,6 +17,7 @@ namespace Character_design
         private static Character Character_instance;
 
         private List<Skill_Class> skills;
+        private List<Skill_Class> skills_with_points;
         private List<Force_skill_class> force_skills;
 
         private Race_class character_race;
@@ -146,7 +147,30 @@ namespace Character_design
         {
             Saved_state = false;
         }
-
+        public void Update_character_skills_list (Skill_Class skill)
+        {
+            bool flag = false;
+            foreach (Skill_Class existed_skill in Skills_with_points)
+            {
+                if (skill.Get_skill_code() == existed_skill.Get_skill_code())
+                {
+                    flag = true;
+                    if (skill.Get_score() == 0)
+                    {
+                        Skills_with_points.Remove(existed_skill);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (skill.Get_score() != 0)
+                {
+                    Skills_with_points.Add(skill);
+                }
+            }
+            OnPropertyChanged("Skills_with_points");
+        }
 
 
 
@@ -254,6 +278,10 @@ namespace Character_design
         {
             get { return skills; }
             set { skills = value; OnPropertyChanged("Skills"); }
+        }
+        public List<Skill_Class> Skills_with_points
+        {
+            get { return skills_with_points; }
         }
         public int Age
         {
