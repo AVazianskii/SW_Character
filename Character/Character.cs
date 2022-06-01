@@ -48,7 +48,14 @@ namespace Character_design
                     attributes_sold,
                     karma,
                     experience_sold_for_force_skills;
-        private int age;
+
+        private int age,
+                    reaction,
+                    armor,
+                    watchfulness,
+                    hideness,
+                    force_resistance,
+                    concentration;
 
         private string sex;
 
@@ -170,6 +177,11 @@ namespace Character_design
                 }
             }
             OnPropertyChanged("Skills_with_points");
+        }
+        public int Return_calculated_reaction()
+        {
+            Reaction = Agility.Get_atribute_score() + Quickness.Get_atribute_score() + Perception.Get_atribute_score() + Intelligence.Get_atribute_score();
+            return Reaction;
         }
 
 
@@ -318,6 +330,36 @@ namespace Character_design
             get { return saved_state; }
             set { saved_state = value; OnPropertyChanged("Saved_state"); }
         }
+        public int Reaction
+        {
+            get { return reaction; }
+            set { reaction = value; OnPropertyChanged("Reaction"); }
+        }
+        public int Armor
+        {
+            get { return armor; }
+            set { armor = value; OnPropertyChanged("Armor"); }
+        }
+        public int Watchfullness
+        {
+            get { return watchfulness; }
+            set { watchfulness = value; OnPropertyChanged("Watchfulness"); }
+        }
+        public int Hideness
+        {
+            get { return hideness; }
+            set { hideness = value; OnPropertyChanged("Hideness"); }
+        }
+        public int Force_resistance
+        {
+            get { return force_resistance; }
+            set { force_resistance = value; OnPropertyChanged("Force_resistance"); }
+        }
+        public int Concentration
+        {  
+            get { return concentration; }
+            set { concentration = value; OnPropertyChanged("Concentration"); }
+        }
 
 
 
@@ -347,6 +389,8 @@ namespace Character_design
             {
                 force_skills.Add(force_skill);
             }
+
+            skills_with_points = new List<Skill_Class>();
 
             Saved_state = false;
             Forceuser = false;
