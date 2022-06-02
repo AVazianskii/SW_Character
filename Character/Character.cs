@@ -178,10 +178,29 @@ namespace Character_design
             }
             OnPropertyChanged("Skills_with_points");
         }
-        public int Return_calculated_reaction()
+        public void Calculate_reaction(int bonus)
         {
-            Reaction = Agility.Get_atribute_score() + Quickness.Get_atribute_score() + Perception.Get_atribute_score() + Intelligence.Get_atribute_score();
-            return Reaction;
+            Reaction = Reaction + bonus;
+        }
+        public void Calculate_armor(int bonus)
+        {
+            Armor = Armor + bonus;
+        }
+        public void Calculate_watchfullness (int bonus)
+        {
+            Watchfullness = Watchfullness + bonus;
+        }
+        public void Calculate_hideness (int bonus)
+        {
+            Hideness = Hideness + bonus;
+        }
+        public void Calculate_force_resistance (int bonus)
+        {
+            Force_resistance = Force_resistance + bonus;
+        }
+        public void Calculate_concentration (int bonus)
+        {
+            Concentration = Concentration + bonus;
         }
 
 
