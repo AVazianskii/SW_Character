@@ -224,6 +224,27 @@ namespace Character_design
                 case 8: Calculate_force_resistance(bonus); break;
             }
         }
+        public void Update_combat_parameters(Skill_Class skill, int bonus)
+        {
+            switch (skill.Get_skill_name())
+            {
+                case "Наблюдательность":    Calculate_watchfullness(1); break;
+                case "Скрытность":          Calculate_hideness(1);      break;
+                case "Сопротивление":
+                    if (Forceuser == false)
+                    {
+                        Calculate_force_resistance(1);
+                    }
+                    break;
+            }
+        }
+        public void Update_combat_parameters(Force_skill_class skill, int bonus)
+        {
+            switch (skill.Name)
+            {
+                case "Cтойкость к Силе": Calculate_force_resistance(1); break;
+            }
+        }
 
 
 
