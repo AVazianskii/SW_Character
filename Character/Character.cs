@@ -202,6 +202,28 @@ namespace Character_design
         {
             Concentration = Concentration + bonus;
         }
+        public void Update_combat_parameters(Atribute_class attribute, int bonus)
+        {
+            switch (attribute.Get_atribute_code())
+            {
+                case 1: break;
+                case 2:
+                    Calculate_reaction(bonus);
+                    Calculate_hideness(bonus);
+                    break;
+
+                case 3: break;
+                case 4:
+                    Calculate_reaction(bonus);
+                    Calculate_watchfullness(bonus);
+                    break;
+
+                case 5: Calculate_reaction(bonus); break;
+                case 6: Calculate_reaction(bonus); break;
+                case 7: break;
+                case 8: Calculate_force_resistance(bonus); break;
+            }
+        }
 
 
 
