@@ -228,12 +228,12 @@ namespace Character_design
         {
             switch (skill.Get_skill_name())
             {
-                case "Наблюдательность":    Calculate_watchfullness(1); break;
-                case "Скрытность":          Calculate_hideness(1);      break;
+                case "Наблюдательность":    Calculate_watchfullness(bonus); break;
+                case "Скрытность":          Calculate_hideness(bonus);      break;
                 case "Сопротивление":
                     if (Forceuser == false)
                     {
-                        Calculate_force_resistance(1);
+                        Calculate_force_resistance(bonus);
                     }
                     break;
             }
@@ -242,7 +242,7 @@ namespace Character_design
         {
             switch (skill.Name)
             {
-                case "Cтойкость к Силе": Calculate_force_resistance(1); break;
+                case "Cтойкость к Силе": Calculate_force_resistance(bonus); break;
             }
         }
 
