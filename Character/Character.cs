@@ -221,7 +221,13 @@ namespace Character_design
                 case 5: Calculate_reaction(bonus); break;
                 case 6: Calculate_reaction(bonus); break;
                 case 7: break;
-                case 8: Calculate_force_resistance(bonus); break;
+                case 8: 
+                    Calculate_force_resistance(bonus); 
+                    if (Forceuser)
+                    {
+                        Calculate_concentration(bonus); break;
+                    }
+                    break;
             }
         }
         public void Update_combat_parameters(Skill_Class skill, int bonus)
@@ -243,6 +249,7 @@ namespace Character_design
             switch (skill.Name)
             {
                 case "Стойкость к Силе": Calculate_force_resistance(bonus); break;
+                case "Поток Силы": Calculate_concentration(bonus); break;
             }
         }
 
