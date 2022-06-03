@@ -238,11 +238,11 @@ namespace Character_design
                     break;
             }
         }
-        public void Update_combat_parameters(Force_skill_class skill, int bonus)
+        public void Update_combat_parameters_due_ForceSkill(Force_skill_class skill, int bonus)
         {
             switch (skill.Name)
             {
-                case "Cтойкость к Силе": Calculate_force_resistance(bonus); break;
+                case "Стойкость к Силе": Calculate_force_resistance(bonus); break;
             }
         }
 
