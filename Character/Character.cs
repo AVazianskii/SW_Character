@@ -19,6 +19,7 @@ namespace Character_design
         private List<Skill_Class> skills;
         private List<Skill_Class> skills_with_points;
         private List<Force_skill_class> force_skills;
+        private List<Force_skill_class> force_skills_with_points;
 
         private Race_class character_race;
         private Atribute_class strength;
@@ -364,6 +365,10 @@ namespace Character_design
         {
             get { return skills_with_points; }
         }
+        public List<Force_skill_class> Force_skills_with_points
+        {
+            get { return force_skills_with_points; }
+        }
         public int Age
         {
             get { return age; }
@@ -459,7 +464,8 @@ namespace Character_design
                 force_skills.Add(force_skill);
             }
 
-            skills_with_points = new List<Skill_Class>();
+            skills_with_points       = new List<Skill_Class>();
+            force_skills_with_points = new List<Force_skill_class>();
 
             Saved_state = false;
             Forceuser = false;
