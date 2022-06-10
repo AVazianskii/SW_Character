@@ -179,6 +179,30 @@ namespace Character_design
             }
             OnPropertyChanged("Skills_with_points");
         }
+        public void Update_character_force_skills_list(Force_skill_class skill)
+        {
+            bool flag = false;
+            foreach (Force_skill_class existed_skill in Force_skills_with_points)
+            {
+                if (skill.Code == existed_skill.Code)
+                {
+                    flag = true;
+                    if (skill.Score == 0)
+                    {
+                        Force_skills_with_points.Remove(existed_skill);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (skill.Score != 0)
+                {
+                    Force_skills_with_points.Add(skill);
+                }
+            }
+            OnPropertyChanged("Force_skills_with_points");
+        }
         public void Calculate_reaction(int bonus)
         {
             Reaction = Reaction + bonus;
