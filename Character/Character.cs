@@ -277,6 +277,38 @@ namespace Character_design
                 case "Поток Силы": Calculate_concentration(bonus); break;
             }
         }
+        public int Return_skill_limit(Skill_Class skill)
+        {
+            int result = 0;
+            switch (skill.Skill_type)
+            {
+                case 1:
+                    if (Age_status.Skill_limit <= Range.Combat_skill_limit) { result = Age_status.Skill_limit; }
+                    else { result = Range.Combat_skill_limit; }
+                    break;
+                case 2:
+                    if (Age_status.Skill_limit <= Range.Surviving_skill_limit) { result = Age_status.Skill_limit; }
+                    else { result = Range.Surviving_skill_limit; }
+                    break;
+                case 3:
+                    if (Age_status.Skill_limit <= Range.Charming_skill_limit) { result = Age_status.Skill_limit; }
+                    else { result = Range.Charming_skill_limit; }
+                    break;
+                case 4:
+                    if (Age_status.Skill_limit <= Range.Tech_skill_limit) { result = Age_status.Skill_limit; }
+                    else { result = Range.Tech_skill_limit; }
+                    break;
+                case 5:
+                    if (Age_status.Skill_limit <= Range.Specific_skill_limit) { result = Age_status.Skill_limit; }
+                    else { result = Range.Specific_skill_limit; }
+                    break;
+            }
+            return result;
+        }
+        public int Return_race_skill_bonus(Skill_Class skill)
+        {
+            return Character_race.Race_skill_bonus[skill.Get_skill_code() - 1];
+        }
 
 
 
