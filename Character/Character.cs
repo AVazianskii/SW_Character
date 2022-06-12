@@ -17,9 +17,9 @@ namespace Character_design
         private static Character Character_instance;
 
         private List<Skill_Class> skills;
-        private List<Skill_Class> skills_with_points;
+        private List<All_skill_template> skills_with_points;
         private List<Force_skill_class> force_skills;
-        private List<Force_skill_class> force_skills_with_points;
+        private List<All_skill_template> force_skills_with_points;
 
         private Race_class character_race;
         private Atribute_class strength;
@@ -257,7 +257,7 @@ namespace Character_design
         }
         public void Update_combat_parameters(Skill_Class skill, int bonus)
         {
-            switch (skill.Get_skill_name())
+            switch (skill.Name)
             {
                 case "Наблюдательность":    Calculate_watchfullness(bonus); break;
                 case "Скрытность":          Calculate_hideness(bonus);      break;
@@ -385,11 +385,11 @@ namespace Character_design
             get { return skills; }
             set { skills = value; OnPropertyChanged("Skills"); }
         }
-        public List<Skill_Class> Skills_with_points
+        public List<All_skill_template> Skills_with_points
         {
             get { return skills_with_points; }
         }
-        public List<Force_skill_class> Force_skills_with_points
+        public List<All_skill_template> Force_skills_with_points
         {
             get { return force_skills_with_points; }
         }
@@ -488,8 +488,8 @@ namespace Character_design
                 force_skills.Add(force_skill);
             }
 
-            skills_with_points       = new List<Skill_Class>();
-            force_skills_with_points = new List<Force_skill_class>();
+            skills_with_points       = new List<All_skill_template>();
+            force_skills_with_points = new List<All_skill_template>();
 
             Saved_state = false;
             Forceuser = false;
