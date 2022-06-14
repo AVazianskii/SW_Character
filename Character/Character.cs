@@ -174,7 +174,7 @@ namespace Character_design
             {
                 if (skill.Get_score() != 0)
                 {
-                    skill.Skill_max_score = Return_skill_limit(skill);
+                    skill.Skill_max_score = Return_race_skill_bonus(skill) + Return_skill_limit(skill);
                     Skills_with_points.Add(skill);
                 }
             }
