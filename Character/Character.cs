@@ -174,6 +174,7 @@ namespace Character_design
             {
                 if (skill.Get_score() != 0)
                 {
+                    skill.Skill_max_score = Return_skill_limit(skill);
                     Skills_with_points.Add(skill);
                 }
             }
@@ -198,6 +199,7 @@ namespace Character_design
             {
                 if (skill.Score != 0)
                 {
+                    skill.Skill_max_score = Age_status.Force_skill_limit;
                     Force_skills_with_points.Add(skill);
                 }
             }
@@ -277,7 +279,7 @@ namespace Character_design
                 case "Поток Силы": Calculate_concentration(bonus); break;
             }
         }
-        public int Return_skill_limit(Skill_Class skill)
+        public int Return_skill_limit(All_skill_template skill)
         {
             int result = 0;
             switch (skill.Skill_type)
@@ -302,6 +304,21 @@ namespace Character_design
                     if (Age_status.Skill_limit <= Range.Specific_skill_limit) { result = Age_status.Skill_limit; }
                     else { result = Range.Specific_skill_limit; }
                     break;
+            }
+            return result;
+        }
+        public int Return_force_skill_limit(Force_skill_class skill)
+        {
+            int result = 0;
+            switch(Age_status.Age_status_name)
+            {
+                case "Неопределено": break;
+                case "Ребенок": break;
+                case "Подросток": break;
+                case "Взрослый": break;
+                case "Средний возраст": break;
+                case "Пожилой возраст": break;
+                case "Почтенный возраст": break;
             }
             return result;
         }
