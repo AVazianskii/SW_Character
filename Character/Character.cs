@@ -324,6 +324,11 @@ namespace Character_design
         {
             return Character_race.Race_skill_bonus[skill.ID - 1];
         }
+        public void Revfresh_fields()
+        {
+            OnPropertyChanged("Skills_with_points");
+            OnPropertyChanged("Force_skills_with_points");
+        }
 
 
 
@@ -438,8 +443,7 @@ namespace Character_design
             { 
                 foreach (var count in skills_with_points)
                 {
-                    //TODO: сделать адаптивное отображение максимума навыка в зависимости от расы
-                    count.Skill_max_score = Return_skill_limit(count);//Return_race_skill_bonus(count);
+                    count.Skill_max_score = Return_skill_limit(count) + Return_race_skill_bonus(count);
                 }
                 return skills_with_points; 
             }
