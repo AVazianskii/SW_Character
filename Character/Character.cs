@@ -305,21 +305,6 @@ namespace Character_design
             }
             return result;
         }
-        public int Return_force_skill_limit(Force_skill_class skill)
-        {
-            int result = 0;
-            switch(Age_status.Age_status_name)
-            {
-                case "Неопределено": break;
-                case "Ребенок": break;
-                case "Подросток": break;
-                case "Взрослый": break;
-                case "Средний возраст": break;
-                case "Пожилой возраст": break;
-                case "Почтенный возраст": break;
-            }
-            return result;
-        }
         public int Return_race_skill_bonus(All_skill_template skill)
         {
             return Character_race.Race_skill_bonus[skill.ID - 1];
