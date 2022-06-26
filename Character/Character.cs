@@ -160,7 +160,7 @@ namespace Character_design
             bool flag = false;
             foreach (Skill_Class existed_skill in Skills_with_points)
             {
-                if (skill.Get_skill_code() == existed_skill.Get_skill_code())
+                if (skill.ID == existed_skill.ID)
                 {
                     flag = true;
                     if (skill.Get_score() == 0)
@@ -174,7 +174,6 @@ namespace Character_design
             {
                 if (skill.Get_score() != 0)
                 {
-                    skill.Skill_max_score = Return_race_skill_bonus(skill) + Return_skill_limit(skill);
                     Skills_with_points.Add(skill);
                 }
             }
@@ -185,7 +184,7 @@ namespace Character_design
             bool flag = false;
             foreach (Force_skill_class existed_skill in Force_skills_with_points)
             {
-                if (skill.Code == existed_skill.Code)
+                if (skill.ID == existed_skill.ID)
                 {
                     flag = true;
                     if (skill.Score == 0)
@@ -199,7 +198,6 @@ namespace Character_design
             {
                 if (skill.Score != 0)
                 {
-                    skill.Skill_max_score = Age_status.Force_skill_limit;
                     Force_skills_with_points.Add(skill);
                 }
             }
@@ -324,7 +322,7 @@ namespace Character_design
         }
         public int Return_race_skill_bonus(Skill_Class skill)
         {
-            return Character_race.Race_skill_bonus[skill.Get_skill_code() - 1];
+            return Character_race.Race_skill_bonus[skill.ID - 1];
         }
 
 
@@ -436,11 +434,26 @@ namespace Character_design
         }
         public List<All_skill_template> Skills_with_points
         {
-            get { return skills_with_points; }
+            get 
+            { 
+                foreach (var count in skills_with_points)
+                {
+                    //TODO: сделать адаптивное отображение максимума навыка в зависимости от расы
+                    count.Skill_max_score = Return_skill_limit(count);//Return_race_skill_bonus(count);
+                }
+                return skills_with_points; 
+            }
         }
         public List<All_skill_template> Force_skills_with_points
         {
-            get { return force_skills_with_points; }
+            get 
+            {
+                foreach (var count in force_skills_with_points)
+                {
+                    count.Skill_max_score = Age_status.Force_skill_limit;
+                }
+                return force_skills_with_points; 
+            }
         }
         public int Age
         {
