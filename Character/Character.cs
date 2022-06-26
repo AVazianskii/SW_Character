@@ -324,7 +324,7 @@ namespace Character_design
         {
             return Character_race.Race_skill_bonus[skill.ID - 1];
         }
-        public void Revfresh_fields()
+        public void Refresh_fields()
         {
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
