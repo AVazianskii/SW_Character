@@ -320,7 +320,7 @@ namespace Character_design
             }
             return result;
         }
-        public int Return_race_skill_bonus(Skill_Class skill)
+        public int Return_race_skill_bonus(All_skill_template skill)
         {
             return Character_race.Race_skill_bonus[skill.ID - 1];
         }
