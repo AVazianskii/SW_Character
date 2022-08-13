@@ -20,6 +20,10 @@ namespace Character_design
         private List<All_skill_template> skills_with_points;
         private List<Force_skill_class> force_skills;
         private List<All_skill_template> force_skills_with_points;
+        private List<Combat_abilities_template> combat_abilities;
+        private List<All_abilities_template> combat_abilities_with_points;
+        private List<Force_abilities_template> force_abilities;
+        private List<All_abilities_template> force_abilities_with_points;
 
         private Race_class character_race;
         private Atribute_class strength;
@@ -509,6 +513,26 @@ namespace Character_design
             get { return concentration; }
             set { concentration = value; OnPropertyChanged("Concentration"); }
         }
+        public List<Combat_abilities_template> Combat_abilities
+        {
+            get { return combat_abilities; }
+            set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
+        }
+        public List<Force_abilities_template> Force_abilities
+        {
+            get { return force_abilities; }
+            set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
+        }
+        public List<All_abilities_template> Combat_abilities_with_points
+        {
+            get { return combat_abilities_with_points; }
+            set { combat_abilities_with_points = value; OnPropertyChanged("Combat_abilities_with_points"); }
+        }
+        public List<All_abilities_template> Force_abilities_with_points
+        {
+            get { return force_abilities_with_points; }
+            set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
+        }
 
 
 
@@ -539,8 +563,12 @@ namespace Character_design
                 force_skills.Add(force_skill);
             }
 
-            skills_with_points       = new List<All_skill_template>();
-            force_skills_with_points = new List<All_skill_template>();
+            combat_abilities                = new List<Combat_abilities_template>();
+            force_abilities                 = new List<Force_abilities_template>();
+            combat_abilities_with_points    = new List<All_abilities_template>();
+            force_abilities_with_points     = new List<All_abilities_template>();
+            skills_with_points              = new List<All_skill_template>();
+            force_skills_with_points        = new List<All_skill_template>();
 
             Saved_state = false;
             Forceuser = false;
