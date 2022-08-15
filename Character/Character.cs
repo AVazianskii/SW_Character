@@ -516,22 +516,22 @@ namespace Character_design
         public List<Combat_abilities_template> Combat_abilities
         {
             get { return combat_abilities; }
-            set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
+            //set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
         }
         public List<Force_abilities_template> Force_abilities
         {
             get { return force_abilities; }
-            set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
+            //set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
         }
         public List<All_abilities_template> Combat_abilities_with_points
         {
             get { return combat_abilities_with_points; }
-            set { combat_abilities_with_points = value; OnPropertyChanged("Combat_abilities_with_points"); }
+            //set { combat_abilities_with_points = value; OnPropertyChanged("Combat_abilities_with_points"); }
         }
         public List<All_abilities_template> Force_abilities_with_points
         {
             get { return force_abilities_with_points; }
-            set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
+            //set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
         }
 
 
@@ -564,7 +564,38 @@ namespace Character_design
             }
 
             combat_abilities                = new List<Combat_abilities_template>();
+            foreach (Combat_abilities_template combat_ability in Main_model.GetInstance().Combat_ability_Manager.Get_abilities())
+            {
+                switch (combat_ability.ID)
+                {
+                    case 1:
+                    case 4:
+                    case 7:
+                    case 10:
+                    case 13:
+                        combat_ability.Is_enable = true;
+                        break;
+                }
+                combat_abilities.Add(combat_ability);
+            }
+
             force_abilities                 = new List<Force_abilities_template>();
+            foreach (Force_abilities_template force_ability in Main_model.GetInstance().Force_ability_Manager.Get_abilities())
+            {
+                switch (force_ability.ID)
+                {
+                    case 1:
+                    case 4:
+                    case 7:
+                    case 10:
+                    case 13:
+                    case 16:
+                        force_ability.Is_enable = true;
+                        break;
+                }
+                force_abilities.Add(force_ability);
+            }
+
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
             skills_with_points              = new List<All_skill_template>();
