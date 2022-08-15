@@ -516,22 +516,22 @@ namespace Character_design
         public List<Combat_abilities_template> Combat_abilities
         {
             get { return combat_abilities; }
-            //set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
+            set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
         }
         public List<Force_abilities_template> Force_abilities
         {
             get { return force_abilities; }
-            //set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
+            set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
         }
         public List<All_abilities_template> Combat_abilities_with_points
         {
             get { return combat_abilities_with_points; }
-            //set { combat_abilities_with_points = value; OnPropertyChanged("Combat_abilities_with_points"); }
+            set { combat_abilities_with_points = value; OnPropertyChanged("Combat_abilities_with_points"); }
         }
         public List<All_abilities_template> Force_abilities_with_points
         {
             get { return force_abilities_with_points; }
-            //set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
+            set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
         }
 
 
