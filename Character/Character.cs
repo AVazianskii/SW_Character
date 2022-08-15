@@ -562,7 +562,7 @@ namespace Character_design
             {
                 force_skills.Add(force_skill);
             }
-
+            /*
             combat_abilities                = new List<Combat_abilities_template>();
             foreach (Combat_abilities_template combat_ability in Main_model.GetInstance().Combat_ability_Manager.Get_abilities())
             {
@@ -594,7 +594,7 @@ namespace Character_design
                         break;
                 }
                 force_abilities.Add(force_ability);
-            }
+            }*/
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
