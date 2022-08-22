@@ -20,9 +20,9 @@ namespace Character_design
         private List<All_skill_template> skills_with_points;
         private List<Force_skill_class> force_skills;
         private List<All_skill_template> force_skills_with_points;
-        private List<Combat_abilities_template> combat_abilities;
+        private List<All_abilities_template> combat_abilities;
         private List<All_abilities_template> combat_abilities_with_points;
-        private List<Force_abilities_template> force_abilities;
+        private List<All_abilities_template> force_abilities;
         private List<All_abilities_template> force_abilities_with_points;
 
         private Race_class character_race;
@@ -207,6 +207,30 @@ namespace Character_design
             }
             OnPropertyChanged("Force_skills_with_points");
         }
+        public void Update_character_combat_abilities_list (All_abilities_template ability)
+        {
+            bool flag = false;
+            foreach (All_abilities_template existed_ability in combat_abilities_with_points)
+            {
+                if (ability.ID == existed_ability.ID)
+                {
+                    flag = true;
+                    if (ability.Is_chosen == false)
+                    {
+                        combat_abilities_with_points.Remove(existed_ability);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (ability.Is_chosen)
+                {
+                    combat_abilities_with_points.Add(ability);
+                }
+            }
+            OnPropertyChanged("Combat_abilities_with_points");
+        }
         public void Calculate_reaction(int bonus)
         {
             Reaction = Reaction + bonus;
@@ -279,6 +303,30 @@ namespace Character_design
             {
                 case "Стойкость к Силе": Calculate_force_resistance(bonus); break;
                 case "Поток Силы": Calculate_concentration(bonus); break;
+            }
+        }
+        public void Learn_combat_ability(All_abilities_template ability)
+        {
+            foreach (All_abilities_template character_ability in combat_abilities)
+            {
+                if (character_ability.ID == ability.ID)
+                {
+                    character_ability.Is_chosen = true;
+                    Spend_exp_points(ability.Cost);
+                    Update_character_combat_abilities_list(ability);
+                }
+            }
+        }
+        public void Delete_combat_ability(All_abilities_template ability)
+        {
+            foreach (All_abilities_template character_ability in combat_abilities)
+            {
+                if (character_ability.ID == ability.ID)
+                {
+                    character_ability.Is_chosen = false;
+                    Refund_exp_points(character_ability.Cost);
+                    Update_character_combat_abilities_list(character_ability);
+                }
             }
         }
         public int Return_skill_limit(All_skill_template skill)
@@ -513,12 +561,12 @@ namespace Character_design
             get { return concentration; }
             set { concentration = value; OnPropertyChanged("Concentration"); }
         }
-        public List<Combat_abilities_template> Combat_abilities
+        public List<All_abilities_template> Combat_abilities
         {
             get { return combat_abilities; }
             set { combat_abilities = value;OnPropertyChanged("Combat_abilities"); }
         }
-        public List<Force_abilities_template> Force_abilities
+        public List<All_abilities_template> Force_abilities
         {
             get { return force_abilities; }
             set { force_abilities = value; OnPropertyChanged("Force_abilities"); }
@@ -562,39 +610,18 @@ namespace Character_design
             {
                 force_skills.Add(force_skill);
             }
-            /*
-            combat_abilities                = new List<Combat_abilities_template>();
+            
+            combat_abilities                = new List<All_abilities_template>();
             foreach (Combat_abilities_template combat_ability in Main_model.GetInstance().Combat_ability_Manager.Get_abilities())
             {
-                switch (combat_ability.ID)
-                {
-                    case 1:
-                    case 4:
-                    case 7:
-                    case 10:
-                    case 13:
-                        combat_ability.Is_enable = true;
-                        break;
-                }
                 combat_abilities.Add(combat_ability);
             }
 
-            force_abilities                 = new List<Force_abilities_template>();
+            force_abilities                 = new List<All_abilities_template>();
             foreach (Force_abilities_template force_ability in Main_model.GetInstance().Force_ability_Manager.Get_abilities())
             {
-                switch (force_ability.ID)
-                {
-                    case 1:
-                    case 4:
-                    case 7:
-                    case 10:
-                    case 13:
-                    case 16:
-                        force_ability.Is_enable = true;
-                        break;
-                }
-                force_abilities.Add(force_ability);
-            }*/
+                force_abilities.Add(force_ability);          
+            }
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
