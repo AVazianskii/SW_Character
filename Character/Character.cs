@@ -314,6 +314,7 @@ namespace Character_design
                     character_ability.Is_chosen = true;
                     Spend_exp_points(ability.Cost);
                     Update_character_combat_abilities_list(ability);
+                    break;
                 }
             }
         }
@@ -326,6 +327,7 @@ namespace Character_design
                     character_ability.Is_chosen = false;
                     Refund_exp_points(character_ability.Cost);
                     Update_character_combat_abilities_list(character_ability);
+                    break;
                 }
             }
         }
