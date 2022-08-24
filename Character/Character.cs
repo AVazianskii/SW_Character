@@ -25,6 +25,8 @@ namespace Character_design
         private List<All_abilities_template> force_abilities;
         private List<All_abilities_template> force_abilities_with_points;
 
+        private List<int> skill_limits;
+
         private Race_class character_race;
         private Atribute_class strength;
         private Atribute_class agility;
@@ -349,6 +351,15 @@ namespace Character_design
                 }
             }
         }
+        public int Return_combat_ability_skill_limit(All_skill_template skill)
+        {
+            int result = 0;
+            foreach (All_abilities_template ability in Combat_abilities)
+            {
+                result = ability.Skill_bonuses[skill.ID - 1];
+            }
+            return result;
+        }
         public int Return_skill_limit(All_skill_template skill)
         {
             int result = 0;
@@ -375,6 +386,12 @@ namespace Character_design
                     else { result = Range.Specific_skill_limit; }
                     break;
             }
+            return result;
+        }
+        // TODO: переделать алгоритм подсчета лимита прокачки навыков на более централизованный способ
+        public int Return_summ_skill_limit()
+        {
+            int result = 0;
             return result;
         }
         public int Return_race_skill_bonus(All_skill_template skill)
@@ -601,6 +618,11 @@ namespace Character_design
             get { return force_abilities_with_points; }
             set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
         }
+        public List<int> Skill_limits
+        {
+            get { return skill_limits; }
+            set { skill_limits = value; OnPropertyChanged("Skill_limits"); }
+        }
 
 
 
@@ -620,9 +642,11 @@ namespace Character_design
             Willpower       = Main_model.GetInstance().Attribute_Manager.Get_willpower();
 
             skills = new List<Skill_Class>();
+            skill_limits = new List<int>();
             foreach (Skill_Class Skill in Main_model.GetInstance().Skill_Manager.Get_skills())
             {
                 skills.Add(Skill);
+                skill_limits.Add(new int());
             }
 
             force_skills = new List<Force_skill_class>();
