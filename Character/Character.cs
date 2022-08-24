@@ -354,9 +354,15 @@ namespace Character_design
         public int Return_combat_ability_skill_limit(All_skill_template skill)
         {
             int result = 0;
-            foreach (All_abilities_template ability in Combat_abilities)
+            if (Combat_abilities_with_points.Count > 0)
             {
-                result = ability.Skill_bonuses[skill.ID - 1];
+                foreach (All_abilities_template ability in Combat_abilities_with_points)
+                {
+                    if (ability.Skill_bonuses[skill.ID - 1] > 0)
+                    {
+                        result = result + ability.Skill_bonuses[skill.ID - 1];
+                    }
+                }
             }
             return result;
         }
