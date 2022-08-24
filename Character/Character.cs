@@ -324,7 +324,7 @@ namespace Character_design
                     Calculate_force_resistance  (ability.Force_resistance_bonus);
                     Calculate_concentration     (ability.Concentration_bonus);
 
-                    Apply_race_skill_bonus(ability);
+                    Apply_combat_ability_skill_bonus(ability);
                     break;
                 }
             }
@@ -346,7 +346,7 @@ namespace Character_design
                     Calculate_force_resistance  (-ability.Force_resistance_bonus);
                     Calculate_concentration     (-ability.Concentration_bonus);
 
-                    Apply_race_skill_bonus(ability);
+                    UnApply_combat_ability_skill_bonus(ability);
                     break;
                 }
             }
@@ -694,12 +694,23 @@ namespace Character_design
             Attributes_sold = Attributes_sold - cost;
             Attributes_left = Attributes - Attributes_sold;
         }
-        private void Apply_race_skill_bonus(All_abilities_template ability)
+        private void Apply_combat_ability_skill_bonus(All_abilities_template ability)
         {
             int i = 0;
             foreach (int skill_bonus in ability.Skill_bonuses)
             {
                 Skills[i].Set_score(Skills[i].Get_score() + skill_bonus);
+
+                Update_character_skills_list(Skills[i]);
+                i = i + 1;
+            }
+        }
+        private void UnApply_combat_ability_skill_bonus(All_abilities_template ability)
+        {
+            int i = 0;
+            foreach (int skill_bonus in ability.Skill_bonuses)
+            {
+                Skills[i].Set_score(Skills[i].Get_score() - skill_bonus);
 
                 Update_character_skills_list(Skills[i]);
                 i = i + 1;
