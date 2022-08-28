@@ -233,6 +233,30 @@ namespace Character_design
             }
             OnPropertyChanged("Combat_abilities_with_points");
         }
+        public void Update_character_force_abilities_list(All_abilities_template ability)
+        {
+            bool flag = false;
+            foreach (All_abilities_template existed_ability in force_abilities_with_points)
+            {
+                if (ability.ID == existed_ability.ID)
+                {
+                    flag = true;
+                    if (ability.Is_chosen == false)
+                    {
+                        force_abilities_with_points.Remove(existed_ability);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (ability.Is_chosen)
+                {
+                    force_abilities_with_points.Add(ability);
+                }
+            }
+            OnPropertyChanged("Force_abilities_with_points");
+        }
         public void Calculate_reaction(int bonus)
         {
             Reaction = Reaction + bonus;
@@ -347,6 +371,34 @@ namespace Character_design
                     Calculate_concentration     (-ability.Concentration_bonus);
 
                     UnApply_combat_ability_skill_bonus(ability);
+                    break;
+                }
+            }
+        }
+        public void Learn_force_ability(All_abilities_template ability)
+        {
+            foreach (All_abilities_template character_ability in force_abilities)
+            {
+                if (character_ability.ID == ability.ID)
+                {
+                    character_ability.Is_chosen = true;
+                    Spend_exp_points(ability.Cost);
+                    Update_character_force_abilities_list(ability);
+
+                    break;
+                }
+            }
+        }
+        public void Delete_force_ability(All_abilities_template ability)
+        {
+            foreach (All_abilities_template character_ability in force_abilities)
+            {
+                if (character_ability.ID == ability.ID)
+                {
+                    character_ability.Is_chosen = false;
+                    Refund_exp_points(character_ability.Cost);
+                    Update_character_force_abilities_list(character_ability);
+
                     break;
                 }
             }
