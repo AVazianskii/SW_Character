@@ -341,7 +341,7 @@ namespace Character_design
                     Spend_exp_points(ability.Cost);
                     Update_character_combat_abilities_list(ability);
 
-                    Calculate_reaction          (ability.Reaction_bonus);
+                    Calculate_reaction          (ability.Reaction_bonus); 
                     Calculate_armor             (ability.Armor_bonus);
                     Calculate_watchfullness     (ability.Watchfullness_bonus);
                     Calculate_hideness          (ability.Stealthness_bonus);
