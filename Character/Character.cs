@@ -66,6 +66,12 @@ namespace Character_design
 
         private string sex;
 
+        private int limit_all_forms,
+                    limit_force_skills,
+                    limit_skills,
+                    limit_positive_features,
+                    limit_negative_features;
+
 
 
         public List<Skill_Class> Get_skills()
@@ -695,6 +701,26 @@ namespace Character_design
             get { return skill_limits; }
             set { skill_limits = value; OnPropertyChanged("Skill_limits"); }
         }
+        public int Limit_all_forms
+        {
+            get { return limit_all_forms; }
+        }
+        public int Limit_force_skills
+        {
+            get { return limit_force_skills; }
+        }
+        public int Limit_skills
+        {
+            get { return limit_skills; }
+        }
+        public int Limit_positive_features
+        {
+            get { return limit_positive_features; }
+        }
+        public int Limit_negative_features
+        {
+            get { return limit_negative_features; }
+        }
 
 
 
@@ -738,6 +764,12 @@ namespace Character_design
             {
                 force_abilities.Add(force_ability);          
             }
+
+            limit_all_forms = 8;
+            limit_force_skills = 17;
+            limit_skills = 34;
+            limit_positive_features = 8;
+            limit_negative_features = 8;
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
