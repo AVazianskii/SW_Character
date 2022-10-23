@@ -24,6 +24,8 @@ namespace Character_design
         private List<All_abilities_template> combat_abilities_with_points;
         private List<All_abilities_template> force_abilities;
         private List<All_abilities_template> force_abilities_with_points;
+        private List<Abilities_sequence_template> combat_sequences_with_points;
+        private List<Abilities_sequence_template> force_sequences_with_points;
 
         private List<int> skill_limits;
 
@@ -239,6 +241,44 @@ namespace Character_design
             }
             OnPropertyChanged("Combat_abilities_with_points");
         }
+        public void Update_character_combat_sequences_list(Abilities_sequence_template sequence)
+        {
+            bool flag = false;
+            foreach (Abilities_sequence_template existed_sequnece in combat_sequences_with_points)
+            {
+                if (sequence.Name == existed_sequnece.Name)
+                {
+                    flag = true;
+                    if (sequence.Base_ability_lvl != null)
+                    {
+                        if (sequence.Base_ability_lvl.Is_chosen == false)
+                        {
+                            combat_sequences_with_points.Remove(existed_sequnece);
+                        }
+                    }
+                    else if (sequence.Adept_ability_lvl != null)
+                    {
+                        if (sequence.Adept_ability_lvl.Is_chosen == false)
+                        {
+                            combat_sequences_with_points.Remove(existed_sequnece);
+                        }
+                    }
+                    else if (sequence.Master_ability_lvl.Is_chosen == false)
+                    {
+                        combat_sequences_with_points.Remove(existed_sequnece);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (sequence.Base_ability_lvl.Is_chosen)
+                {
+                    combat_sequences_with_points.Add(sequence);
+                }
+            }
+            OnPropertyChanged("Combat_sequences_with_points");
+        }
         public void Update_character_force_abilities_list(All_abilities_template ability)
         {
             bool flag = false;
@@ -337,7 +377,7 @@ namespace Character_design
                 case "Поток Силы": Calculate_concentration(bonus); break;
             }
         }
-        public void Learn_combat_ability(All_abilities_template ability)
+        public void Learn_combat_ability(All_abilities_template ability, Abilities_sequence_template sequence)
         {
             foreach (All_abilities_template character_ability in combat_abilities)
             {
@@ -346,6 +386,7 @@ namespace Character_design
                     character_ability.Is_chosen = true;
                     Spend_exp_points(ability.Cost);
                     Update_character_combat_abilities_list(ability);
+                    Update_character_combat_sequences_list(sequence);
 
                     Calculate_reaction          (ability.Reaction_bonus); 
                     Calculate_armor             (ability.Armor_bonus);
@@ -359,7 +400,7 @@ namespace Character_design
                 }
             }
         }
-        public void Delete_combat_ability(All_abilities_template ability)
+        public void Delete_combat_ability(All_abilities_template ability, Abilities_sequence_template sequence)
         {
             foreach (All_abilities_template character_ability in combat_abilities)
             {
@@ -368,6 +409,7 @@ namespace Character_design
                     character_ability.Is_chosen = false;
                     Refund_exp_points(character_ability.Cost);
                     Update_character_combat_abilities_list(character_ability);
+                    Update_character_combat_sequences_list(sequence);
 
                     Calculate_reaction          (-ability.Reaction_bonus);
                     Calculate_armor             (-ability.Armor_bonus);
@@ -696,6 +738,16 @@ namespace Character_design
             get { return force_abilities_with_points; }
             set { force_abilities_with_points = value; OnPropertyChanged("Force_abilities_with_points"); }
         }
+        public List<Abilities_sequence_template> Combat_sequences_with_points
+        {
+            get { return combat_sequences_with_points; }
+            set { combat_sequences_with_points = value; OnPropertyChanged("Combat_sequences_with_points"); }
+        }
+        public List<Abilities_sequence_template> Force_sequences_with_points
+        {
+            get { return force_sequences_with_points; }
+            set { force_sequences_with_points = value; OnPropertyChanged("Force_sequences_with_points"); }
+        }
         public List<int> Skill_limits
         {
             get { return skill_limits; }
@@ -775,6 +827,8 @@ namespace Character_design
             force_abilities_with_points     = new List<All_abilities_template>();
             skills_with_points              = new List<All_skill_template>();
             force_skills_with_points        = new List<All_skill_template>();
+            combat_sequences_with_points    = new List<Abilities_sequence_template>();
+            force_sequences_with_points     = new List<Abilities_sequence_template>();
 
             Saved_state = false;
             Forceuser = false;
