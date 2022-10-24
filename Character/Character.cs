@@ -303,6 +303,44 @@ namespace Character_design
             }
             OnPropertyChanged("Force_abilities_with_points");
         }
+        public void Update_character_force_sequences_list(Abilities_sequence_template sequence)
+        {
+            bool flag = false;
+            foreach (Abilities_sequence_template existed_sequnece in force_sequences_with_points)
+            {
+                if (sequence.Name == existed_sequnece.Name)
+                {
+                    flag = true;
+                    if (sequence.Base_ability_lvl != null)
+                    {
+                        if (sequence.Base_ability_lvl.Is_chosen == false)
+                        {
+                            force_sequences_with_points.Remove(existed_sequnece);
+                        }
+                    }
+                    else if (sequence.Adept_ability_lvl != null)
+                    {
+                        if (sequence.Adept_ability_lvl.Is_chosen == false)
+                        {
+                            force_sequences_with_points.Remove(existed_sequnece);
+                        }
+                    }
+                    else if (sequence.Master_ability_lvl.Is_chosen == false)
+                    {
+                        force_sequences_with_points.Remove(existed_sequnece);
+                    }
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                if (sequence.Base_ability_lvl.Is_chosen)
+                {
+                    force_sequences_with_points.Add(sequence);
+                }
+            }
+            OnPropertyChanged("Force_sequences_with_points");
+        }
         public void Calculate_reaction(int bonus)
         {
             Reaction = Reaction + bonus;
