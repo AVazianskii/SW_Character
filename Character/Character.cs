@@ -386,6 +386,7 @@ namespace Character_design
                     character_ability.Is_chosen = true;
                     Spend_exp_points(ability.Cost);
                     Update_character_combat_abilities_list(ability);
+                    Set_sequence_level(character_ability, sequence);
                     Update_character_combat_sequences_list(sequence);
 
                     Calculate_reaction          (ability.Reaction_bonus); 
@@ -409,6 +410,7 @@ namespace Character_design
                     character_ability.Is_chosen = false;
                     Refund_exp_points(character_ability.Cost);
                     Update_character_combat_abilities_list(character_ability);
+                    Set_sequence_level(character_ability, sequence);
                     Update_character_combat_sequences_list(sequence);
 
                     Calculate_reaction          (-ability.Reaction_bonus);
@@ -866,6 +868,42 @@ namespace Character_design
 
                 Update_character_skills_list(Skills[i]);
                 i = i + 1;
+            }
+        }
+        private void Set_sequence_level (All_abilities_template ability, Abilities_sequence_template sequence)
+        {
+            if (sequence.Base_ability_lvl != null )
+            {
+                if (sequence.Base_ability_lvl == ability && ability.Is_chosen)
+                {
+                    sequence.Level = 1;
+                }
+                else if (sequence.Base_ability_lvl == ability && ability.Is_chosen == false)
+                {
+                    sequence.Level = 0;
+                }
+            }
+            if (sequence.Adept_ability_lvl != null)
+            {
+                if (sequence.Adept_ability_lvl == ability && ability.Is_chosen)
+                {
+                    sequence.Level = 2;
+                }
+                else if (sequence.Adept_ability_lvl == ability && ability.Is_chosen == false)
+                {
+                    sequence.Level = 1;
+                }
+            }
+            if (sequence.Master_ability_lvl != null)
+            {
+                if (sequence.Master_ability_lvl == ability && ability.Is_chosen)
+                {
+                    sequence.Level = 3;
+                }
+                else if (sequence.Master_ability_lvl == ability && ability.Is_chosen == false)
+                {
+                    sequence.Level = 2;
+                }
             }
         }
     }
