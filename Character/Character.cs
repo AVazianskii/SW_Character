@@ -876,33 +876,33 @@ namespace Character_design
             {
                 if (sequence.Base_ability_lvl == ability && ability.Is_chosen)
                 {
-                    sequence.Level = 1;
+                    sequence.Level = "Ученик";
                 }
                 else if (sequence.Base_ability_lvl == ability && ability.Is_chosen == false)
                 {
-                    sequence.Level = 0;
+                    sequence.Level = "Не выбрано";
                 }
             }
             if (sequence.Adept_ability_lvl != null)
             {
                 if (sequence.Adept_ability_lvl == ability && ability.Is_chosen)
                 {
-                    sequence.Level = 2;
+                    sequence.Level = "Адепт";
                 }
                 else if (sequence.Adept_ability_lvl == ability && ability.Is_chosen == false)
                 {
-                    sequence.Level = 1;
+                    sequence.Level = "Ученик";
                 }
             }
             if (sequence.Master_ability_lvl != null)
             {
                 if (sequence.Master_ability_lvl == ability && ability.Is_chosen)
                 {
-                    sequence.Level = 3;
+                    sequence.Level = "Мастер";
                 }
                 else if (sequence.Master_ability_lvl == ability && ability.Is_chosen == false)
                 {
-                    sequence.Level = 2;
+                    sequence.Level = "Адепт";
                 }
             }
         }
