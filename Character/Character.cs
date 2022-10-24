@@ -463,7 +463,7 @@ namespace Character_design
                 }
             }
         }
-        public void Learn_force_ability(All_abilities_template ability)
+        public void Learn_force_ability(All_abilities_template ability, Abilities_sequence_template sequence)
         {
             foreach (All_abilities_template character_ability in force_abilities)
             {
@@ -472,6 +472,8 @@ namespace Character_design
                     character_ability.Is_chosen = true;
                     Spend_exp_points(ability.Cost);
                     Update_character_force_abilities_list(ability);
+                    Set_sequence_level(character_ability, sequence);
+                    Update_character_force_sequences_list(sequence);
 
                     Calculate_reaction          (ability.Reaction_bonus);
                     Calculate_armor             (ability.Armor_bonus);
@@ -484,7 +486,7 @@ namespace Character_design
                 }
             }
         }
-        public void Delete_force_ability(All_abilities_template ability)
+        public void Delete_force_ability(All_abilities_template ability, Abilities_sequence_template sequence)
         {
             foreach (All_abilities_template character_ability in force_abilities)
             {
@@ -493,6 +495,8 @@ namespace Character_design
                     character_ability.Is_chosen = false;
                     Refund_exp_points(character_ability.Cost);
                     Update_character_force_abilities_list(character_ability);
+                    Set_sequence_level(character_ability, sequence);
+                    Update_character_force_sequences_list(sequence);
 
                     Calculate_reaction          (-ability.Reaction_bonus);
                     Calculate_armor             (-ability.Armor_bonus);
