@@ -330,6 +330,7 @@ namespace Character_design
                         if (sequence.Base_ability_lvl.Is_chosen == false)
                         {
                             force_sequences_with_points.Remove(existed_sequnece);
+                            Limit_all_forms_left = Limit_all_forms_left + 1;
                         }
                     }
                     else if (sequence.Adept_ability_lvl != null)
@@ -337,11 +338,13 @@ namespace Character_design
                         if (sequence.Adept_ability_lvl.Is_chosen == false)
                         {
                             force_sequences_with_points.Remove(existed_sequnece);
+                            Limit_all_forms_left = Limit_all_forms_left + 1;
                         }
                     }
                     else if (sequence.Master_ability_lvl.Is_chosen == false)
                     {
                         force_sequences_with_points.Remove(existed_sequnece);
+                        Limit_all_forms_left = Limit_all_forms_left + 1;
                     }
                     break;
                 }
@@ -351,6 +354,7 @@ namespace Character_design
                 if (sequence.Base_ability_lvl.Is_chosen)
                 {
                     force_sequences_with_points.Add(sequence);
+                    Limit_all_forms_left = Limit_all_forms_left - 1;
                 }
             }
             OnPropertyChanged("Force_sequences_with_points");
