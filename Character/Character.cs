@@ -212,6 +212,7 @@ namespace Character_design
                     if (skill.Score == 0)
                     {
                         Force_skills_with_points.Remove(existed_skill);
+                        Limit_force_skills_left = Limit_force_skills_left + 1;
                     }
                     break;
                 }
@@ -221,6 +222,7 @@ namespace Character_design
                 if (skill.Score != 0)
                 {
                     Force_skills_with_points.Add(skill);
+                    Limit_force_skills_left = Limit_force_skills_left - 1;
                 }
             }
             OnPropertyChanged("Force_skills_with_points");
