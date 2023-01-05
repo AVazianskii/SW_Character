@@ -28,6 +28,8 @@ namespace Character_design
         private List<Abilities_sequence_template> force_sequences_with_points;
         private List<All_feature_template> positive_features_with_points;
         private List<All_feature_template> negative_features_with_points;
+        private List<All_feature_template> positive_features;
+        private List<All_feature_template> negative_features;
 
         private List<int> skill_limits;
 
@@ -569,6 +571,14 @@ namespace Character_design
                 }
             }
         }
+        public void Learn_feature(All_feature_template feature)
+        {
+
+        }
+        public void Delete_feature(All_feature_template feature)
+        {
+
+        }
         public int Return_combat_ability_skill_limit(All_skill_template skill)
         {
             int result = 0;
@@ -765,6 +775,16 @@ namespace Character_design
         {
             get { return negative_features_with_points; }
         }
+        public List<All_feature_template> Positive_features
+        {
+            get { return positive_features; }
+            set { positive_features = value; OnPropertyChanged("Positive_features"); }
+        }
+        public List<All_feature_template> Negative_features
+        {
+            get { return negative_features; }
+            set { negative_features = value; OnPropertyChanged("Negative_features"); }
+        }
         public int Age
         {
             get { return age; }
@@ -922,16 +942,28 @@ namespace Character_design
                 force_skills.Add(force_skill);
             }
             
-            combat_abilities                = new List<All_abilities_template>();
+            combat_abilities = new List<All_abilities_template>();
             foreach (Combat_abilities_template combat_ability in Main_model.GetInstance().Combat_ability_Manager.Get_abilities())
             {
                 combat_abilities.Add(combat_ability);
             }
 
-            force_abilities                 = new List<All_abilities_template>();
+            force_abilities = new List<All_abilities_template>();
             foreach (Force_abilities_template force_ability in Main_model.GetInstance().Force_ability_Manager.Get_abilities())
             {
                 force_abilities.Add(force_ability);          
+            }
+
+            positive_features = new List<All_feature_template>();
+            foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
+            {
+                positive_features.Add(feature);
+            }
+
+            negative_features = new List<All_feature_template>();
+            foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_negative_features())
+            {
+                negative_features.Add(feature);
             }
 
             limit_all_forms         = 8;
