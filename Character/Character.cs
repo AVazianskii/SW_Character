@@ -361,6 +361,46 @@ namespace Character_design
             }
             OnPropertyChanged("Force_sequences_with_points");
         }
+        public void Update_character_positive_featue_list(All_feature_template feature)
+        {
+            bool flag = false;
+            foreach (All_feature_template existed_feature in Positive_features_with_points)
+            {
+                if (feature.ID == existed_feature.ID)
+                {
+                    flag = true;
+                    Positive_features_with_points.Remove(existed_feature);
+                    Limit_positive_features_left = Limit_positive_features_left + 1;
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                Positive_features_with_points.Add(feature);
+                Limit_positive_features_left = Limit_positive_features_left - 1;
+            }
+            OnPropertyChanged("Positive_features_with_points");
+        }
+        public void Update_character_negative_featue_list(All_feature_template feature)
+        {
+            bool flag = false;
+            foreach (All_feature_template existed_feature in Negative_features_with_points)
+            {
+                if (feature.ID == existed_feature.ID)
+                {
+                    flag = true;
+                    Negative_features_with_points.Remove(existed_feature);
+                    Limit_negative_features_left = Limit_negative_features_left + 1;
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                Negative_features_with_points.Add(feature);
+                Limit_negative_features_left = Limit_negative_features_left - 1;
+            }
+            OnPropertyChanged("Negative_features_with_points");
+        }
         public void Calculate_reaction(int bonus)
         {
             Reaction = Reaction + bonus;
