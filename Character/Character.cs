@@ -361,7 +361,7 @@ namespace Character_design
             }
             OnPropertyChanged("Force_sequences_with_points");
         }
-        public void Update_character_positive_featue_list(All_feature_template feature)
+        public void Update_character_positive_feature_list(All_feature_template feature)
         {
             bool flag = false;
             foreach (All_feature_template existed_feature in Positive_features_with_points)
@@ -381,7 +381,7 @@ namespace Character_design
             }
             OnPropertyChanged("Positive_features_with_points");
         }
-        public void Update_character_negative_featue_list(All_feature_template feature)
+        public void Update_character_negative_feature_list(All_feature_template feature)
         {
             bool flag = false;
             foreach (All_feature_template existed_feature in Negative_features_with_points)
