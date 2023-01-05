@@ -26,6 +26,8 @@ namespace Character_design
         private List<All_abilities_template> force_abilities_with_points;
         private List<Abilities_sequence_template> combat_sequences_with_points;
         private List<Abilities_sequence_template> force_sequences_with_points;
+        private List<All_feature_template> positive_features_with_points;
+        private List<All_feature_template> negative_features_with_points;
 
         private List<int> skill_limits;
 
@@ -715,6 +717,14 @@ namespace Character_design
                 return force_skills_with_points; 
             }
         }
+        public List<All_feature_template> Positive_features_with_points
+        {
+            get { return positive_features_with_points; }
+        }
+        public List<All_feature_template> Negative_features_with_points
+        {
+            get { return negative_features_with_points; }
+        }
         public int Age
         {
             get { return age; }
@@ -902,6 +912,8 @@ namespace Character_design
             force_skills_with_points        = new List<All_skill_template>();
             combat_sequences_with_points    = new List<Abilities_sequence_template>();
             force_sequences_with_points     = new List<Abilities_sequence_template>();
+            positive_features_with_points   = new List<All_feature_template>();
+            negative_features_with_points   = new List<All_feature_template>();
 
             Saved_state = false;
             Forceuser = false;
