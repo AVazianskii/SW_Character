@@ -573,11 +573,157 @@ namespace Character_design
         }
         public void Learn_feature(All_feature_template feature)
         {
+            bool flag = false;
+            foreach(All_feature_template character_feature in positive_features)
+            {
+                if (character_feature.ID == feature.ID)
+                {
+                    flag = true;
+                    character_feature.Is_chosen = true;
+                    Update_character_positive_feature_list(character_feature);
 
+                    Strength.Increase_atr(character_feature.Strength_bonus);
+                    Update_combat_parameters(Strength, character_feature.Strength_bonus);
+
+                    Agility.Increase_atr(character_feature.Agility_bonus);
+                    Update_combat_parameters(Agility, character_feature.Agility_bonus);
+
+                    Stamina.Increase_atr(character_feature.Stamina_bonus);
+                    Update_combat_parameters(Stamina, character_feature.Stamina_bonus);
+
+                    Quickness.Increase_atr(character_feature.Quickness_bonus);
+                    Update_combat_parameters(Quickness, character_feature.Quickness_bonus);
+
+                    Perception.Increase_atr(character_feature.Perception_bonus);
+                    Update_combat_parameters(Perception, character_feature.Perception_bonus);
+
+                    Intelligence.Increase_atr(character_feature.Intelligence_bonus);
+                    Update_combat_parameters(Intelligence, character_feature.Intelligence_bonus);
+
+                    Charm.Increase_atr(character_feature.Charm_bonus);
+                    Update_combat_parameters(Charm, character_feature.Charm_bonus);
+
+                    Willpower.Increase_atr(character_feature.Willpower_bonus);
+                    Update_combat_parameters(Willpower, character_feature.Willpower_bonus);
+
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                foreach (All_feature_template character_feature in negative_features)
+                {
+                    if (character_feature.ID == feature.ID)
+                    {
+                        flag = true;
+                        character_feature.Is_chosen = true;
+                        Update_character_positive_feature_list(character_feature);
+
+                        Strength.Increase_atr(character_feature.Strength_bonus);
+                        Update_combat_parameters(Strength, character_feature.Strength_bonus);
+
+                        Agility.Increase_atr(character_feature.Agility_bonus);
+                        Update_combat_parameters(Agility, character_feature.Agility_bonus);
+
+                        Stamina.Increase_atr(character_feature.Stamina_bonus);
+                        Update_combat_parameters(Stamina, character_feature.Stamina_bonus);
+
+                        Quickness.Increase_atr(character_feature.Quickness_bonus);
+                        Update_combat_parameters(Quickness, character_feature.Quickness_bonus);
+
+                        Perception.Increase_atr(character_feature.Perception_bonus);
+                        Update_combat_parameters(Perception, character_feature.Perception_bonus);
+
+                        Intelligence.Increase_atr(character_feature.Intelligence_bonus);
+                        Update_combat_parameters(Intelligence, character_feature.Intelligence_bonus);
+
+                        Charm.Increase_atr(character_feature.Charm_bonus);
+                        Update_combat_parameters(Charm, character_feature.Charm_bonus);
+
+                        Willpower.Increase_atr(character_feature.Willpower_bonus);
+                        Update_combat_parameters(Willpower, character_feature.Willpower_bonus);
+
+                        break;
+                    }
+                }
+            }
         }
         public void Delete_feature(All_feature_template feature)
         {
+            bool flag = false;
+            foreach (All_feature_template character_feature in positive_features)
+            {
+                if (character_feature.ID == feature.ID)
+                {
+                    flag = true;
+                    character_feature.Is_chosen = false;
+                    Update_character_positive_feature_list(character_feature);
 
+                    Strength.Increase_atr(-character_feature.Strength_bonus);
+                    Update_combat_parameters(Strength, -character_feature.Strength_bonus);
+
+                    Agility.Increase_atr(-character_feature.Agility_bonus);
+                    Update_combat_parameters(Agility, -character_feature.Agility_bonus);
+
+                    Stamina.Increase_atr(-character_feature.Stamina_bonus);
+                    Update_combat_parameters(Stamina, -character_feature.Stamina_bonus);
+
+                    Quickness.Increase_atr(-character_feature.Quickness_bonus);
+                    Update_combat_parameters(Quickness, -character_feature.Quickness_bonus);
+
+                    Perception.Increase_atr(-character_feature.Perception_bonus);
+                    Update_combat_parameters(Perception, -character_feature.Perception_bonus);
+
+                    Intelligence.Increase_atr(-character_feature.Intelligence_bonus);
+                    Update_combat_parameters(Intelligence, -character_feature.Intelligence_bonus);
+
+                    Charm.Increase_atr(-character_feature.Charm_bonus);
+                    Update_combat_parameters(Charm, -character_feature.Charm_bonus);
+
+                    Willpower.Increase_atr(-character_feature.Willpower_bonus);
+                    Update_combat_parameters(Willpower, -character_feature.Willpower_bonus);
+
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                foreach (All_feature_template character_feature in negative_features)
+                {
+                    if (character_feature.ID == feature.ID)
+                    {
+                        flag = true;
+                        character_feature.Is_chosen = false;
+                        Update_character_positive_feature_list(character_feature);
+
+                        Strength.Increase_atr(-character_feature.Strength_bonus);
+                        Update_combat_parameters(Strength, -character_feature.Strength_bonus);
+
+                        Agility.Increase_atr(-character_feature.Agility_bonus);
+                        Update_combat_parameters(Agility, -character_feature.Agility_bonus);
+
+                        Stamina.Increase_atr(-character_feature.Stamina_bonus);
+                        Update_combat_parameters(Stamina, -character_feature.Stamina_bonus);
+
+                        Quickness.Increase_atr(-character_feature.Quickness_bonus);
+                        Update_combat_parameters(Quickness, -character_feature.Quickness_bonus);
+
+                        Perception.Increase_atr(-character_feature.Perception_bonus);
+                        Update_combat_parameters(Perception, -character_feature.Perception_bonus);
+
+                        Intelligence.Increase_atr(-character_feature.Intelligence_bonus);
+                        Update_combat_parameters(Intelligence, -character_feature.Intelligence_bonus);
+
+                        Charm.Increase_atr(-character_feature.Charm_bonus);
+                        Update_combat_parameters(Charm, -character_feature.Charm_bonus);
+
+                        Willpower.Increase_atr(-character_feature.Willpower_bonus);
+                        Update_combat_parameters(Willpower, -character_feature.Willpower_bonus);
+
+                        break;
+                    }
+                }
+            }
         }
         public int Return_combat_ability_skill_limit(All_skill_template skill)
         {
