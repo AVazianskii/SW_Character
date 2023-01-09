@@ -573,12 +573,10 @@ namespace Character_design
         }
         public void Learn_positive_feature(All_feature_template feature)
         {
-            bool flag = false;
             foreach (All_feature_template character_feature in positive_features)
             {
                 if (character_feature.ID == feature.ID)
                 {
-                    flag = true;
                     character_feature.Is_chosen = true;
                     Update_character_positive_feature_list(character_feature);
 
@@ -618,7 +616,7 @@ namespace Character_design
                 {
                 
                     character_feature.Is_chosen = true;
-                    Update_character_positive_feature_list(character_feature);
+                    Update_character_negative_feature_list(character_feature);
 
                     Strength.Increase_atr(character_feature.Strength_bonus);
                     Update_combat_parameters(Strength, character_feature.Strength_bonus);
@@ -693,7 +691,7 @@ namespace Character_design
                 if (character_feature.ID == feature.ID)
                 {
                     character_feature.Is_chosen = false;
-                    Update_character_positive_feature_list(character_feature);
+                    Update_character_negative_feature_list(character_feature);
 
                     Strength.Increase_atr(-character_feature.Strength_bonus);
                     Update_combat_parameters(Strength, -character_feature.Strength_bonus);
