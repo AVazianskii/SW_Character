@@ -376,14 +376,12 @@ namespace Character_design
                 {
                     flag = true;
                     Positive_features_with_points.Remove(existed_feature);
-                    Limit_positive_features_left = Limit_positive_features_left + 1;
                     break;
                 }
             }
             if (flag == false)
             {
                 Positive_features_with_points.Add(feature);
-                Limit_positive_features_left = Limit_positive_features_left - 1;
             }
             OnPropertyChanged("Positive_features_with_points");
         }
@@ -396,14 +394,12 @@ namespace Character_design
                 {
                     flag = true;
                     Negative_features_with_points.Remove(existed_feature);
-                    Limit_negative_features_left = Limit_negative_features_left + 1;
                     break;
                 }
             }
             if (flag == false)
             {
                 Negative_features_with_points.Add(feature);
-                Limit_negative_features_left = Limit_negative_features_left - 1;
             }
             OnPropertyChanged("Negative_features_with_points");
         }
@@ -1171,6 +1167,9 @@ namespace Character_design
             limit_skills_left               = limit_skills;
             limit_positive_features_left    = limit_positive_features;
             limit_negative_features_left    = limit_negative_features;
+
+            Positive_features_points_left = 10;
+            Negative_features_points_left = 10;
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
