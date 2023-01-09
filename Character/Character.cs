@@ -82,7 +82,11 @@ namespace Character_design
                     limit_force_skills_left,
                     limit_skills_left,
                     limit_positive_features_left,
-                    limit_negative_features_left;
+                    limit_negative_features_left,
+                    positive_features_points_sold,
+                    negative_features_points_sold,
+                    positive_features_points_left,
+                    negative_features_points_left;
 
 
 
@@ -725,6 +729,30 @@ namespace Character_design
                 }
             }
         }
+        public void Spend_positive_feature_points(int cost)
+        {
+            Positive_features_points_sold = Positive_features_points_sold + cost;
+            Positive_features_points_left = Positive_features_points_left - cost;
+            Limit_positive_features_left = Limit_positive_features_left - 1;
+        }
+        public void Refund_positive_feature_points(int cost)
+        {
+            Positive_features_points_sold = Positive_features_points_sold - cost;
+            Positive_features_points_left = Positive_features_points_left + cost;
+            Limit_positive_features_left = Limit_positive_features_left + 1;
+        }
+        public void Spend_negative_feature_points(int cost)
+        {
+            Negative_features_points_sold = Negative_features_points_sold + cost;
+            Negative_features_points_left = Negative_features_points_left - cost;
+            Limit_negative_features_left = Limit_negative_features_left - 1;
+        }
+        public void Refund_negative_feature_points(int cost)
+        {
+            Negative_features_points_sold = Negative_features_points_sold - cost;
+            Negative_features_points_left = Negative_features_points_left + cost;
+            Limit_negative_features_left = Limit_negative_features_left + 1;
+        }
         public int Return_combat_ability_skill_limit(All_skill_template skill)
         {
             int result = 0;
@@ -885,6 +913,26 @@ namespace Character_design
         {
             get { return attributes_sold; }
             set { attributes_sold = value; OnPropertyChanged("Attributes_sold"); }
+        }
+        public int Positive_features_points_sold
+        {
+            get { return positive_features_points_sold; }
+            set { positive_features_points_sold = value; OnPropertyChanged("Positive_features_points_sold"); }
+        }
+        public int Negative_features_points_sold
+        {
+            get { return negative_features_points_sold; }
+            set { negative_features_points_sold = value; OnPropertyChanged("Negative_features_points_sold"); }
+        }
+        public int Positive_features_points_left
+        {
+            get { return positive_features_points_left; }
+            set { positive_features_points_left = value; OnPropertyChanged("Positive_features_points_left"); }
+        }
+        public int Negative_features_points_left
+        {
+            get { return negative_features_points_left; }
+            set { negative_features_points_left = value; OnPropertyChanged("Negative_features_points_left"); }
         }
         public List<Skill_Class> Skills
         {
