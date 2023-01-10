@@ -30,6 +30,7 @@ namespace Character_design
         private List<All_feature_template> negative_features_with_points;
         private List<All_feature_template> positive_features;
         private List<All_feature_template> negative_features;
+        private List<All_feature_template> charm_features;
 
         private List<int> skill_limits;
 
@@ -983,6 +984,11 @@ namespace Character_design
             get { return negative_features; }
             set { negative_features = value; OnPropertyChanged("Negative_features"); }
         }
+        public List<All_feature_template> Charm_features
+        {
+            get { return charm_features; }
+            set { charm_features = value; OnPropertyChanged("Charm_features"); }
+        }
         public int Age
         {
             get { return age; }
@@ -1161,12 +1167,27 @@ namespace Character_design
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
+                switch(feature.ID)
+                {
+                    case 20: charm_features.Add(feature); break;
+                    case 35: charm_features.Add(feature); break;
+                    case 39: charm_features.Add(feature); break;
+                }
             }
 
             negative_features = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_negative_features())
             {
                 negative_features.Add(feature);
+                switch (feature.ID)
+                {
+                    case 49: charm_features.Add(feature); break;
+                    case 59: charm_features.Add(feature); break;
+                    case 61: charm_features.Add(feature); break;
+                    case 66: charm_features.Add(feature); break;
+                    case 69: charm_features.Add(feature); break;
+                    case 78: charm_features.Add(feature); break;
+                }
             }
 
             limit_all_forms         = 8;
