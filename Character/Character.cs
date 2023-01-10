@@ -799,6 +799,10 @@ namespace Character_design
         {
             return Character_race.Race_skill_bonus[skill.ID - 1];
         }
+        public int Return_total_feature_score()
+        {
+            return Positive_features_points_sold - Negative_features_points_sold;
+        }
         public void Refresh_fields()
         {
             OnPropertyChanged("Skills_with_points");
