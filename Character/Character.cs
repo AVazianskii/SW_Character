@@ -31,6 +31,7 @@ namespace Character_design
         private List<All_feature_template> positive_features;
         private List<All_feature_template> negative_features;
         private List<All_feature_template> charm_features;
+        private List<All_feature_template> hero_features;
 
         private List<int> skill_limits;
 
@@ -989,6 +990,11 @@ namespace Character_design
             get { return charm_features; }
             set { charm_features = value; OnPropertyChanged("Charm_features"); }
         }
+        public List<All_feature_template> Hero_features
+        {
+            get { return hero_features; }
+            set { hero_features = value; OnPropertyChanged("Hero_features"); }
+        }
         public int Age
         {
             get { return age; }
@@ -1164,6 +1170,7 @@ namespace Character_design
             }
 
             charm_features      = new List<All_feature_template>();
+            hero_features       = new List<All_feature_template>();
             positive_features   = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
@@ -1187,7 +1194,10 @@ namespace Character_design
                     case 61: charm_features.Add(feature); break;
                     case 66: charm_features.Add(feature); break;
                     case 69: charm_features.Add(feature); break;
+                    case 70: hero_features. Add(feature); break;
                     case 78: charm_features.Add(feature); break;
+                    case 79: hero_features. Add(feature); break;
+                    case 81: hero_features. Add(feature); break;
                 }
             }
 
