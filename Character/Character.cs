@@ -26,12 +26,15 @@ namespace Character_design
         private List<All_abilities_template> force_abilities_with_points;
         private List<Abilities_sequence_template> combat_sequences_with_points;
         private List<Abilities_sequence_template> force_sequences_with_points;
-        private List<All_feature_template> positive_features_with_points;
-        private List<All_feature_template> negative_features_with_points;
-        private List<All_feature_template> positive_features;
-        private List<All_feature_template> negative_features;
-        private List<All_feature_template> charm_features;
-        private List<All_feature_template> hero_features;
+        private List<All_feature_template>  positive_features_with_points,
+                                            negative_features_with_points,
+                                            positive_features,
+                                            negative_features,
+                                            charm_features,
+                                            hero_features,
+                                            sleep_feature,
+                                            alcohol_feature;
+        
 
         private List<int> skill_limits;
 
@@ -978,22 +981,26 @@ namespace Character_design
         public List<All_feature_template> Positive_features
         {
             get { return positive_features; }
-            set { positive_features = value; OnPropertyChanged("Positive_features"); }
         }
         public List<All_feature_template> Negative_features
         {
             get { return negative_features; }
-            set { negative_features = value; OnPropertyChanged("Negative_features"); }
         }
         public List<All_feature_template> Charm_features
         {
             get { return charm_features; }
-            set { charm_features = value; OnPropertyChanged("Charm_features"); }
         }
         public List<All_feature_template> Hero_features
         {
             get { return hero_features; }
-            set { hero_features = value; OnPropertyChanged("Hero_features"); }
+        }
+        public List<All_feature_template> Sleep_feature
+        {
+            get { return sleep_feature; }
+        }
+        public List<All_feature_template> Alcohol_feature
+        {
+            get { return alcohol_feature; }
         }
         public int Age
         {
@@ -1172,12 +1179,16 @@ namespace Character_design
             charm_features      = new List<All_feature_template>();
             hero_features       = new List<All_feature_template>();
             positive_features   = new List<All_feature_template>();
+            sleep_feature       = new List<All_feature_template>();
+            alcohol_feature     = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
                 switch(feature.ID)
                 {
                     case 20: charm_features.Add(feature); break;
+                    case 22: sleep_feature. Add(feature); break;
+                    case 28: alcohol_feature.Add(feature); break;
                     case 35: charm_features.Add(feature); break;
                     case 39: charm_features.Add(feature); break;
                 }
@@ -1190,6 +1201,8 @@ namespace Character_design
                 switch (feature.ID)
                 {
                     case 49: charm_features.Add(feature); break;
+                    case 56: sleep_feature. Add(feature); break;
+                    case 58: alcohol_feature.Add(feature); break;
                     case 59: charm_features.Add(feature); break;
                     case 61: charm_features.Add(feature); break;
                     case 66: charm_features.Add(feature); break;
