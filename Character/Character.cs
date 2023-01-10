@@ -51,7 +51,8 @@ namespace Character_design
                      is_jedi,
                      is_neutral;
 
-        private bool saved_state;
+        private bool saved_state,
+                     features_balanced;
 
         private int experience,
                     experience_left,
@@ -801,7 +802,13 @@ namespace Character_design
         }
         public int Return_total_feature_score()
         {
-            return Positive_features_points_sold - Negative_features_points_sold;
+            int result = Positive_features_points_sold - Negative_features_points_sold;
+            features_balanced = false;
+            if (result == 0)
+            {
+                features_balanced = true;
+            }
+            return result;
         }
         public void Refresh_fields()
         {
@@ -1011,6 +1018,11 @@ namespace Character_design
             get { return saved_state; }
             set { saved_state = value; OnPropertyChanged("Saved_state"); }
         }
+        public bool Features_balanced
+        {
+            get { return features_balanced; }
+            set { features_balanced = value; OnPropertyChanged("features_balanced"); }
+        }
         public int Reaction
         {
             get { return reaction; }
@@ -1183,6 +1195,7 @@ namespace Character_design
 
             Saved_state = false;
             Forceuser = false;
+            Features_balanced = true;
         }
 
 
