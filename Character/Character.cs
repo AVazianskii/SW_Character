@@ -1163,7 +1163,8 @@ namespace Character_design
                 force_abilities.Add(force_ability);          
             }
 
-            positive_features = new List<All_feature_template>();
+            charm_features      = new List<All_feature_template>();
+            positive_features   = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
