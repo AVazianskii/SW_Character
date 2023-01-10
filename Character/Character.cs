@@ -1213,6 +1213,7 @@ namespace Character_design
             force_sequences_with_points     = new List<Abilities_sequence_template>();
             positive_features_with_points   = new List<All_feature_template>();
             negative_features_with_points   = new List<All_feature_template>();
+            charm_features                  = new List<All_feature_template>();
 
             Saved_state = false;
             Forceuser = false;
