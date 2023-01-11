@@ -1022,6 +1022,14 @@ namespace Character_design
         {
             get { return alcohol_feature; }
         }
+        public List<All_feature_template> Sith_feature
+        {
+            get { return sith_feature; }
+        }
+        public List<All_feature_template> Jedi_feature
+        {
+            get { return jedi_feature; }
+        }
         public int Age
         {
             get { return age; }
