@@ -655,7 +655,7 @@ namespace Character_design
                     Update_combat_parameters(Willpower, character_feature.Willpower_bonus);
 
                     Experience = Experience + character_feature.Exp_bonus;
-                    Experience_left = Experience_left + character_feature.Exp_bonus;
+                    //Experience_left = Experience_left + character_feature.Exp_bonus;
 
                     Karma = Karma + character_feature.Karma_bonus;
 
@@ -697,7 +697,7 @@ namespace Character_design
                     Update_combat_parameters(Willpower, -character_feature.Willpower_bonus);
 
                     Experience = Experience - character_feature.Exp_bonus;
-                    Experience_left = Experience_left - character_feature.Exp_bonus;
+                    //Experience_left = Experience_left - character_feature.Exp_bonus;
 
                     Karma = Karma - character_feature.Karma_bonus;
 
