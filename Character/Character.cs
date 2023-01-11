@@ -33,7 +33,9 @@ namespace Character_design
                                             charm_features,
                                             hero_features,
                                             sleep_feature,
-                                            alcohol_feature;
+                                            alcohol_feature,
+                                            sith_feature,
+                                            jedi_feature;
         
 
         private List<int> skill_limits;
@@ -610,6 +612,10 @@ namespace Character_design
                     Willpower.Increase_atr(character_feature.Willpower_bonus);
                     Update_combat_parameters(Willpower, character_feature.Willpower_bonus);
 
+                    Experience = Experience + character_feature.Exp_bonus;
+                    Experience_left = Experience_left + character_feature.Exp_bonus;
+
+                    Karma = Karma + character_feature.Karma_bonus;
                     break;
                 }
             }
@@ -648,11 +654,15 @@ namespace Character_design
                     Willpower.Increase_atr(character_feature.Willpower_bonus);
                     Update_combat_parameters(Willpower, character_feature.Willpower_bonus);
 
+                    Experience = Experience + character_feature.Exp_bonus;
+                    Experience_left = Experience_left + character_feature.Exp_bonus;
+
+                    Karma = Karma + character_feature.Karma_bonus;
+
                     break;
                 }
             }
         }
-        
         public void Delete_positive_feature(All_feature_template feature)
         {
             foreach (All_feature_template character_feature in positive_features)
@@ -685,6 +695,11 @@ namespace Character_design
 
                     Willpower.Increase_atr(-character_feature.Willpower_bonus);
                     Update_combat_parameters(Willpower, -character_feature.Willpower_bonus);
+
+                    Experience = Experience - character_feature.Exp_bonus;
+                    Experience_left = Experience_left - character_feature.Exp_bonus;
+
+                    Karma = Karma - character_feature.Karma_bonus;
 
                     break;
                 }
@@ -722,7 +737,12 @@ namespace Character_design
 
                     Willpower.Increase_atr(-character_feature.Willpower_bonus);
                     Update_combat_parameters(Willpower, -character_feature.Willpower_bonus);
-    
+
+                    Experience = Experience - character_feature.Exp_bonus;
+                    Experience_left = Experience_left - character_feature.Exp_bonus;
+
+                    Karma = Karma - character_feature.Karma_bonus;
+
                     break;
                 }
             }
@@ -1181,6 +1201,8 @@ namespace Character_design
             positive_features   = new List<All_feature_template>();
             sleep_feature       = new List<All_feature_template>();
             alcohol_feature     = new List<All_feature_template>();
+            sith_feature        = new List<All_feature_template>();
+            jedi_feature        = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
@@ -1191,6 +1213,8 @@ namespace Character_design
                     case 28: alcohol_feature.Add(feature); break;
                     case 35: charm_features.Add(feature); break;
                     case 39: charm_features.Add(feature); break;
+                    case 90: jedi_feature.Add(feature); break;
+                    case 91: sith_feature.Add(feature); break;
                 }
             }
 
@@ -1211,6 +1235,8 @@ namespace Character_design
                     case 78: charm_features.Add(feature); break;
                     case 79: hero_features. Add(feature); break;
                     case 81: hero_features. Add(feature); break;
+                    case 102: jedi_feature.Add(feature); break;
+                    case 101: sith_feature.Add(feature); break;
                 }
             }
 
