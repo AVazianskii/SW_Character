@@ -1029,6 +1029,10 @@ namespace Character_design
         {
             get { return jedi_feature; }
         }
+        public List<All_feature_template> Exp_feature
+        {
+            get { return exp_feature; }
+        }
         public int Age
         {
             get { return age; }
