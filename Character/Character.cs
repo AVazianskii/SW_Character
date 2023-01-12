@@ -35,7 +35,8 @@ namespace Character_design
                                             sleep_feature,
                                             alcohol_feature,
                                             sith_feature,
-                                            jedi_feature;
+                                            jedi_feature,
+                                            exp_feature;
         
 
         private List<int> skill_limits;
@@ -1209,6 +1210,7 @@ namespace Character_design
             alcohol_feature     = new List<All_feature_template>();
             sith_feature        = new List<All_feature_template>();
             jedi_feature        = new List<All_feature_template>();
+            exp_feature         = new List<All_feature_template>();
             foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
@@ -1219,6 +1221,9 @@ namespace Character_design
                     case 28: alcohol_feature.Add(feature); break;
                     case 35: charm_features.Add(feature); break;
                     case 39: charm_features.Add(feature); break;
+                    case 40: exp_feature.Add(feature); break;
+                    case 45: exp_feature.Add(feature); break;
+                    case 46: exp_feature.Add(feature); break;
                     case 90: jedi_feature.Add(feature); break;
                     case 91: sith_feature.Add(feature); break;
                 }
