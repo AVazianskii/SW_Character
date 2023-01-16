@@ -494,6 +494,12 @@ namespace Character_design
                 if (character_ability.ID == ability.ID)
                 {
                     character_ability.Is_chosen = true;
+
+                    if (sequence.Is_chosen != true)
+                    {
+                        sequence.Is_chosen = true;
+                    }
+
                     Spend_exp_points(ability.Cost);
                     Update_character_combat_abilities_list(ability);
                     Set_sequence_level(character_ability, sequence);
@@ -518,6 +524,12 @@ namespace Character_design
                 if (character_ability.ID == ability.ID)
                 {
                     character_ability.Is_chosen = false;
+
+                    if (character_ability == sequence.Base_ability_lvl)
+                    {
+                        sequence.Is_chosen = false;
+                    }
+
                     Refund_exp_points(character_ability.Cost);
                     Update_character_combat_abilities_list(character_ability);
                     Set_sequence_level(character_ability, sequence);
