@@ -98,6 +98,17 @@ namespace Character_design
                     positive_features_points_left,
                     negative_features_points_left;
 
+        private sbyte scratch_penalty,
+                      light_wound_penalty,
+                      medium_wound_penalty,
+                      tough_wound_penalty;
+
+        private byte scratch_lvl,
+                     light_wound_lvl,
+                     medium_wound_lvl,
+                     tough_wound_lvl,
+                     mortal_wound_lvl;
+
 
 
         public List<Skill_Class> Get_skills()
@@ -1192,6 +1203,51 @@ namespace Character_design
             get { return limit_negative_features_left; }
             set { limit_negative_features_left = value; OnPropertyChanged("Limit_negative_features_left"); }
         }
+        public sbyte Scratch_penalty
+        {
+            get { return scratch_penalty; }
+            set { scratch_penalty = value; OnPropertyChanged("Scratch_penalty"); }
+        }
+        public sbyte Light_wound_penalty
+        {
+            get { return light_wound_penalty; }
+            set { light_wound_penalty = value; OnPropertyChanged("Light_wound_penalty"); }
+        }
+        public sbyte Medium_wound_penalty
+        {
+            get { return medium_wound_penalty; }
+            set { medium_wound_penalty = value; OnPropertyChanged("Medium_wound_penalty"); }
+        }
+        public sbyte Tough_wound_penalty
+        {
+            get { return tough_wound_penalty; }
+            set { tough_wound_penalty = value; OnPropertyChanged("Tough_wound_penalty"); }
+        }
+        public byte Scratch_lvl
+        {
+            get { return scratch_lvl; }
+            set { scratch_lvl = value; OnPropertyChanged("Scratch_lvl"); }
+        }
+        public byte Light_wound_lvl
+        {
+            get { return light_wound_lvl; }
+            set { light_wound_lvl = value; OnPropertyChanged("Light_wound_lvl"); }
+        }
+        public byte Medium_wound_lvl
+        {
+            get { return medium_wound_lvl; }
+            set { medium_wound_lvl = value; OnPropertyChanged("Medium_wound_lvl"); }
+        }
+        public byte Tough_wound_lvl
+        {
+            get { return tough_wound_lvl; }
+            set { tough_wound_lvl = value; OnPropertyChanged("Tough_wound_lvl"); }
+        }
+        public byte Mortal_wound_lvl
+        {
+            get { return mortal_wound_lvl; }
+            set { mortal_wound_lvl = value; OnPropertyChanged("Mortal_wound_lvl"); }
+        }
 
 
 
@@ -1301,6 +1357,17 @@ namespace Character_design
 
             Positive_features_points_left = 10;
             Negative_features_points_left = 10;
+
+            Scratch_penalty = 0;
+            Light_wound_penalty = -2;
+            Medium_wound_penalty = -4;
+            Tough_wound_penalty = -8;
+
+            Scratch_lvl = 2;
+            Light_wound_lvl = 8;
+            Medium_wound_lvl = 14;
+            Tough_wound_lvl = 20;
+            Mortal_wound_lvl = 26;
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
