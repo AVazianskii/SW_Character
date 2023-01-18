@@ -109,6 +109,9 @@ namespace Character_design
                      tough_wound_lvl,
                      mortal_wound_lvl;
 
+        private byte melee_attack,
+                     ranged_attack;
+
 
 
         public List<Skill_Class> Get_skills()
@@ -1248,6 +1251,16 @@ namespace Character_design
             get { return mortal_wound_lvl; }
             set { mortal_wound_lvl = value; OnPropertyChanged("Mortal_wound_lvl"); }
         }
+        public byte Melee_attack
+        {
+            get { return melee_attack; }
+            set { melee_attack = value; OnPropertyChanged("Melee_attack"); }
+        }
+        public byte Ranged_attack
+        {
+            get { return ranged_attack; }
+            set { ranged_attack = value; OnPropertyChanged("Ranged_attack"); }
+        }
 
 
 
@@ -1368,6 +1381,9 @@ namespace Character_design
             Medium_wound_lvl = 14;
             Tough_wound_lvl = 20;
             Mortal_wound_lvl = 26;
+
+            Melee_attack = 0;
+            Ranged_attack = 0;
 
             combat_abilities_with_points    = new List<All_abilities_template>();
             force_abilities_with_points     = new List<All_abilities_template>();
