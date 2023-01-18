@@ -655,6 +655,12 @@ namespace Character_design
                     Experience = Experience + character_feature.Exp_bonus;
                     
                     Karma = Karma + character_feature.Karma_bonus;
+
+                    Scratch_penalty = (sbyte)(Scratch_penalty + character_feature.Scratch_penalty_bonus);
+                    Light_wound_penalty = (sbyte)(Light_wound_penalty + character_feature.Light_wound_penalty_bonus);
+                    Medium_wound_penalty = (sbyte)(Medium_wound_penalty + character_feature.Medium_wound_penalty_bonus);
+                    Tough_wound_penalty = (sbyte)(Tough_wound_penalty + character_feature.Tough_wound_penalty_bonus);
+
                     break;
                 }
             }
@@ -696,6 +702,11 @@ namespace Character_design
                     Experience = Experience + character_feature.Exp_bonus;
                     
                     Karma = Karma + character_feature.Karma_bonus;
+
+                    Scratch_penalty = (sbyte)(Scratch_penalty + character_feature.Scratch_penalty_bonus);
+                    Light_wound_penalty = (sbyte)(Light_wound_penalty + character_feature.Light_wound_penalty_bonus);
+                    Medium_wound_penalty = (sbyte)(Medium_wound_penalty + character_feature.Medium_wound_penalty_bonus);
+                    Tough_wound_penalty = (sbyte)(Tough_wound_penalty + character_feature.Tough_wound_penalty_bonus);
 
                     break;
                 }
@@ -739,6 +750,11 @@ namespace Character_design
 
                     Karma = Karma - character_feature.Karma_bonus;
 
+                    Scratch_penalty = (sbyte)(Scratch_penalty - character_feature.Scratch_penalty_bonus);
+                    Light_wound_penalty = (sbyte)(Light_wound_penalty - character_feature.Light_wound_penalty_bonus);
+                    Medium_wound_penalty = (sbyte)(Medium_wound_penalty - character_feature.Medium_wound_penalty_bonus);
+                    Tough_wound_penalty = (sbyte)(Tough_wound_penalty - character_feature.Tough_wound_penalty_bonus);
+
                     break;
                 }
             }
@@ -780,6 +796,11 @@ namespace Character_design
                     Experience_left = Experience_left - character_feature.Exp_bonus;
 
                     Karma = Karma - character_feature.Karma_bonus;
+
+                    Scratch_penalty         = (sbyte)(Scratch_penalty - character_feature.Scratch_penalty_bonus);
+                    Light_wound_penalty     = (sbyte)(Light_wound_penalty - character_feature.Light_wound_penalty_bonus);
+                    Medium_wound_penalty    = (sbyte)(Medium_wound_penalty - character_feature.Medium_wound_penalty_bonus);
+                    Tough_wound_penalty     = (sbyte)(Tough_wound_penalty - character_feature.Tough_wound_penalty_bonus);
 
                     break;
                 }
@@ -878,7 +899,7 @@ namespace Character_design
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
         }
-
+        
 
 
         public Atribute_class Strength
