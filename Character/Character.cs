@@ -1351,6 +1351,7 @@ namespace Character_design
                     case 78: charm_features.Add(feature); break;
                     case 79: hero_features. Add(feature); break;
                     case 81: hero_features. Add(feature); break;
+                    case 86: armour_feature.Add(feature); break;
                     case 102: jedi_feature.Add(feature); break;
                     case 101: sith_feature.Add(feature); break;
                 }
