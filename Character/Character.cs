@@ -101,7 +101,11 @@ namespace Character_design
         private sbyte scratch_penalty,
                       light_wound_penalty,
                       medium_wound_penalty,
-                      tough_wound_penalty;
+                      tough_wound_penalty,
+                      visible_scratch_penalty,
+                      visible_light_wound_penalty,
+                      visible_medium_wound_penalty,
+                      visible_tough_wound_penalty;
 
         private byte scratch_lvl,
                      light_wound_lvl,
@@ -626,6 +630,7 @@ namespace Character_design
                 if (character_feature.ID == feature.ID)
                 {
                     character_feature.Is_chosen = true;
+                    Limit_positive_features_left = Limit_positive_features_left - 1;
                     Update_character_positive_feature_list(character_feature);
 
                     Strength.Increase_atr(character_feature.Strength_bonus);
@@ -673,6 +678,7 @@ namespace Character_design
                 {
                 
                     character_feature.Is_chosen = true;
+                    Limit_negative_features_left = Limit_negative_features_left - 1;
                     Update_character_negative_feature_list(character_feature);
 
                     Strength.Increase_atr(character_feature.Strength_bonus);
@@ -719,6 +725,7 @@ namespace Character_design
                 if (character_feature.ID == feature.ID)
                 {
                     character_feature.Is_chosen = false;
+                    Limit_positive_features_left = Limit_positive_features_left + 1;
                     Update_character_positive_feature_list(character_feature);
 
                     Strength.Increase_atr(-character_feature.Strength_bonus);
@@ -766,6 +773,7 @@ namespace Character_design
                 if (character_feature.ID == feature.ID)
                 {
                     character_feature.Is_chosen = false;
+                    Limit_negative_features_left = Limit_negative_features_left + 1;
                     Update_character_negative_feature_list(character_feature);
 
                     Strength.Increase_atr(-character_feature.Strength_bonus);
@@ -811,25 +819,21 @@ namespace Character_design
         {
             Positive_features_points_sold = Positive_features_points_sold + cost;
             Positive_features_points_left = Positive_features_points_left - cost;
-            Limit_positive_features_left = Limit_positive_features_left - 1;
         }
         public void Refund_positive_feature_points(int cost)
         {
             Positive_features_points_sold = Positive_features_points_sold - cost;
             Positive_features_points_left = Positive_features_points_left + cost;
-            Limit_positive_features_left = Limit_positive_features_left + 1;
         }
         public void Spend_negative_feature_points(int cost)
         {
             Negative_features_points_sold = Negative_features_points_sold + cost;
             Negative_features_points_left = Negative_features_points_left - cost;
-            Limit_negative_features_left = Limit_negative_features_left - 1;
         }
         public void Refund_negative_feature_points(int cost)
         {
             Negative_features_points_sold = Negative_features_points_sold - cost;
             Negative_features_points_left = Negative_features_points_left + cost;
-            Limit_negative_features_left = Limit_negative_features_left + 1;
         }
         public int Return_combat_ability_skill_limit(All_skill_template skill)
         {
@@ -1229,8 +1233,25 @@ namespace Character_design
         }
         public sbyte Scratch_penalty
         {
-            get { return scratch_penalty; }
-            set { scratch_penalty = value; OnPropertyChanged("Scratch_penalty"); }
+            get 
+            {
+                if (visible_scratch_penalty == 0)
+                {
+                    return scratch_penalty;
+                }
+                else
+                {
+                    return visible_scratch_penalty;
+                }
+            }
+            set 
+            { 
+                if (value > 0)
+                {
+                    visible_scratch_penalty = 0;
+                }
+                scratch_penalty = value; OnPropertyChanged("Scratch_penalty"); 
+            }
         }
         public sbyte Light_wound_penalty
         {
@@ -1393,10 +1414,14 @@ namespace Character_design
             Positive_features_points_left = 10;
             Negative_features_points_left = 10;
 
-            Scratch_penalty = 0;
-            Light_wound_penalty = -2;
-            Medium_wound_penalty = -4;
-            Tough_wound_penalty = -8;
+            scratch_penalty = 0;
+            light_wound_penalty = -2;
+            medium_wound_penalty = -4;
+            tough_wound_penalty = -8;
+            visible_scratch_penalty = scratch_penalty;
+            visible_light_wound_penalty = light_wound_penalty;
+            visible_medium_wound_penalty = medium_wound_penalty;
+            visible_tough_wound_penalty = tough_wound_penalty;
 
             Scratch_lvl = 2;
             Light_wound_lvl = 8;
@@ -1418,6 +1443,9 @@ namespace Character_design
             
             Saved_state = false;
             Forceuser = false;
+            Is_neutral = true;
+            Is_sith = false;
+            Is_jedi = false;
             Features_balanced = true;
         }
 
