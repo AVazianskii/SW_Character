@@ -1235,18 +1235,12 @@ namespace Character_design
         {
             get 
             {
-                if (visible_scratch_penalty == 0)
-                {
-                    return scratch_penalty;
-                }
-                else
-                {
-                    return visible_scratch_penalty;
-                }
+                if (visible_scratch_penalty == 0) { return visible_scratch_penalty; }
+                else { return scratch_penalty; }
             }
             set 
             { 
-                if (value > 0)
+                if (Scratch_penalty + value > 0)
                 {
                     visible_scratch_penalty = 0;
                 }
@@ -1255,18 +1249,51 @@ namespace Character_design
         }
         public sbyte Light_wound_penalty
         {
-            get { return light_wound_penalty; }
-            set { light_wound_penalty = value; OnPropertyChanged("Light_wound_penalty"); }
+            get 
+            {
+                if (visible_light_wound_penalty == 0) { return visible_light_wound_penalty; }
+                else { return light_wound_penalty; }
+            }
+            set 
+            {
+                if (Light_wound_penalty + value > 0)
+                {
+                    visible_light_wound_penalty = 0;
+                }
+                light_wound_penalty = value; OnPropertyChanged("Light_wound_penalty"); 
+            }
         }
         public sbyte Medium_wound_penalty
         {
-            get { return medium_wound_penalty; }
-            set { medium_wound_penalty = value; OnPropertyChanged("Medium_wound_penalty"); }
+            get 
+            {
+                if (visible_medium_wound_penalty == 0) { return visible_medium_wound_penalty; }
+                else { return medium_wound_penalty; }
+            }
+            set 
+            {
+                if (Medium_wound_penalty + value > 0)
+                {
+                    visible_medium_wound_penalty = 0;
+                }
+                medium_wound_penalty = value; OnPropertyChanged("Medium_wound_penalty"); 
+            }
         }
         public sbyte Tough_wound_penalty
         {
-            get { return tough_wound_penalty; }
-            set { tough_wound_penalty = value; OnPropertyChanged("Tough_wound_penalty"); }
+            get 
+            {
+                if (visible_tough_wound_penalty == 0) { return visible_tough_wound_penalty; }
+                else { return tough_wound_penalty; }
+            }
+            set 
+            {
+                if (Tough_wound_penalty + value > 0)
+                {
+                    visible_tough_wound_penalty = 0;
+                }
+                tough_wound_penalty = value; OnPropertyChanged("Tough_wound_penalty"); 
+            }
         }
         public byte Scratch_lvl
         {
