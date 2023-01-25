@@ -80,7 +80,8 @@ namespace Character_design
                     force_resistance,
                     concentration;
 
-        private string sex;
+        private string sex,
+                       name;
 
         private int limit_all_forms,
                     limit_force_skills,
@@ -1331,6 +1332,11 @@ namespace Character_design
         {
             get { return ranged_attack; }
             set { ranged_attack = value; OnPropertyChanged("Ranged_attack"); }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; OnPropertyChanged("Name"); }
         }
 
 
