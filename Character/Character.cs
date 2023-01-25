@@ -126,14 +126,6 @@ namespace Character_design
         {
             return force_skills;
         }
-        public static Character GetInstance()
-        {
-            if (Character_instance == null)
-            {
-                Character_instance = new Character();
-            }
-            return Character_instance;
-        }
         public void Delete_character()
         {
             if (Character_instance != null)
@@ -903,7 +895,17 @@ namespace Character_design
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
         }
-        
+
+
+        public static Character GetInstance()
+        {
+            if (Character_instance == null)
+            {
+                Character_instance = new Character();
+            }
+            return Character_instance;
+        }
+
 
 
         public Atribute_class Strength
