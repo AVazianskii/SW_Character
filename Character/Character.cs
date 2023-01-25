@@ -196,7 +196,7 @@ namespace Character_design
                 skill.Score = 0;
             }
         }
-        public void Save_character_to_excel_card()
+        public void Save_character()
         {
             Saved_state = true;
         }
@@ -896,6 +896,7 @@ namespace Character_design
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
         }
+
 
 
         public static Character GetInstance()
