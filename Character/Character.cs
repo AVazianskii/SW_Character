@@ -127,13 +127,6 @@ namespace Character_design
         {
             return force_skills;
         }
-        public void Delete_character()
-        {
-            if (Character_instance != null)
-            {
-                Character_instance = null;
-            }
-        }
         public void Spend_exp_points(int cost)
         {
             Experience_sold = Experience_sold + cost;
@@ -894,7 +887,13 @@ namespace Character_design
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
         }
-
+        public void Delete_character()
+        {
+            if (Character_instance != null)
+            {
+                Character_instance = null;
+            }
+        }
 
 
         public static Character GetInstance()
@@ -904,6 +903,14 @@ namespace Character_design
                 Character_instance = new Character();
             }
             return Character_instance;
+        }
+        public static bool CheckInstanceNotNull()
+        {
+            if (Character_instance != null)
+            {
+                return true;
+            }
+            return false;
         }
 
 
