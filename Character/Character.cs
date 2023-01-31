@@ -887,13 +887,7 @@ namespace Character_design
             OnPropertyChanged("Skills_with_points");
             OnPropertyChanged("Force_skills_with_points");
         }
-        public void Delete_character()
-        {
-            if (Character_instance != null)
-            {
-                Character_instance = null;
-            }
-        }
+
 
 
         public static Character GetInstance()
@@ -901,8 +895,24 @@ namespace Character_design
             if (Character_instance == null)
             {
                 Character_instance = new Character();
-            }
+            } 
             return Character_instance;
+        }
+        public static void OverWriteInstance()
+        {
+            if (Character_instance != null)
+            {
+                Character_instance = new Character() ;
+
+                //Character_instance.Strength.Set_atr_score(0);
+                //Character_instance.Agility.Set_atr_score(0);
+                //Character_instance.Stamina.Set_atr_score(0);
+                //Character_instance.Quickness.Set_atr_score(0);
+                //Character_instance.Perception.Set_atr_score(0);
+                //Character_instance.Intelligence.Set_atr_score(0);
+                //Character_instance.Charm.Set_atr_score(0);
+                //Character_instance.Willpower.Set_atr_score(0);
+            }
         }
         public static bool CheckInstanceNotNull()
         {
@@ -1347,7 +1357,7 @@ namespace Character_design
 
 
 
-        public Character()
+        private Character()
         {
             Character_race  = Main_model.GetInstance().Race_Manager.Get_Race_list()[0];
             Age_status      = Main_model.GetInstance().Age_status_Manager.Age_Statuses()[0]; // устанавливаем возрастной статус "Неизвестно" персонажу
@@ -1488,6 +1498,8 @@ namespace Character_design
             Is_sith = false;
             Is_jedi = false;
             Features_balanced = true;
+
+            Name = "Дарт Сидиус";
         }
 
 
