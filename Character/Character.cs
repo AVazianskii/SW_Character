@@ -903,15 +903,6 @@ namespace Character_design
             if (Character_instance != null)
             {
                 Character_instance = new Character() ;
-
-                //Character_instance.Strength.Set_atr_score(0);
-                //Character_instance.Agility.Set_atr_score(0);
-                //Character_instance.Stamina.Set_atr_score(0);
-                //Character_instance.Quickness.Set_atr_score(0);
-                //Character_instance.Perception.Set_atr_score(0);
-                //Character_instance.Intelligence.Set_atr_score(0);
-                //Character_instance.Charm.Set_atr_score(0);
-                //Character_instance.Willpower.Set_atr_score(0);
             }
         }
         public static bool CheckInstanceNotNull()
