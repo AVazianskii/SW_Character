@@ -81,7 +81,9 @@ namespace Character_design
                     concentration;
 
         private string sex,
-                       name;
+                       name,
+                       img_path,
+                       icon_path;
 
         private int limit_all_forms,
                     limit_force_skills,
@@ -1345,6 +1347,16 @@ namespace Character_design
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
+        public string Img_path
+        {
+            get { return img_path; }
+            set { img_path = value; OnPropertyChanged("Img_path"); }
+        }
+        public string Icon_path
+        {
+            get { return icon_path; }
+            set { icon_path = value; OnPropertyChanged("Icon_path"); }
+        }
 
 
 
@@ -1491,6 +1503,8 @@ namespace Character_design
             Features_balanced = true;
 
             Name = "Дарт Сидиус";
+            Img_path = "";
+            Icon_path = "";
         }
 
 
