@@ -464,10 +464,7 @@ namespace Character_design
                 case 7: break;
                 case 8: 
                     Calculate_force_resistance(bonus); 
-                    if (Forceuser)
-                    {
-                        Calculate_concentration(bonus); break;
-                    }
+                    Calculate_concentration(bonus); break;
                     break;
             }
         }
