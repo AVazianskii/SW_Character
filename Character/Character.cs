@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using SW_Character_creation;
 using Races_libs;
 using Skills_libs;
@@ -1500,7 +1498,7 @@ namespace Character_design
             Features_balanced = true;
 
             Name = "Дарт Сидиус";
-            Img_path = "";
+            Img_path = Directory.GetCurrentDirectory() + "\\Pictures\\Common\\nobody_icon.png"; ;
             Icon_path = "";
         }
 
