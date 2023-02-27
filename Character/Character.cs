@@ -12,7 +12,7 @@ namespace Character_design
 {
     public class Character : BaseViewModel_2
     {
-        private static Character Character_instance;
+        //private static Character Character_instance;
 
         private List<Skill_Class> skills;
         private List<All_skill_template> skills_with_points;
@@ -886,7 +886,7 @@ namespace Character_design
         }
 
 
-
+        /*
         public static Character GetInstance()
         {
             if (Character_instance == null)
@@ -909,7 +909,7 @@ namespace Character_design
                 return true;
             }
             return false;
-        }
+        }*/
 
 
 
@@ -1355,43 +1355,43 @@ namespace Character_design
 
 
 
-        private Character()
+        public Character(Main_model model)
         {
-            Character_race  = Main_model.GetInstance().Race_Manager.Get_Race_list()[0];
-            Age_status      = Main_model.GetInstance().Age_status_Manager.Age_Statuses()[0]; // устанавливаем возрастной статус "Неизвестно" персонажу
-            Range           = Main_model.GetInstance().Range_Manager.Ranges()[0]; // устанавливаем ранг "Рядовой" персонажу
+            Character_race  = model.Race_Manager.Get_Race_list()[0];
+            Age_status      = model.Age_status_Manager.Age_Statuses()[0]; // устанавливаем возрастной статус "Неизвестно" персонажу
+            Range           = model.Range_Manager.Ranges()[0]; // устанавливаем ранг "Рядовой" персонажу
 
-            Strength        = Main_model.GetInstance().Attribute_Manager.Get_strength();
-            Agility         = Main_model.GetInstance().Attribute_Manager.Get_agility();
-            Stamina         = Main_model.GetInstance().Attribute_Manager.Get_stamina();
-            Quickness       = Main_model.GetInstance().Attribute_Manager.Get_quickness();
-            Perception      = Main_model.GetInstance().Attribute_Manager.Get_perception();
-            Intelligence    = Main_model.GetInstance().Attribute_Manager.Get_intelligence();
-            Charm           = Main_model.GetInstance().Attribute_Manager.Get_charm();
-            Willpower       = Main_model.GetInstance().Attribute_Manager.Get_willpower();
+            Strength        = model.Attribute_Manager.Get_strength();
+            Agility         = model.Attribute_Manager.Get_agility();
+            Stamina         = model.Attribute_Manager.Get_stamina();
+            Quickness       = model.Attribute_Manager.Get_quickness();
+            Perception      = model.Attribute_Manager.Get_perception();
+            Intelligence    = model.Attribute_Manager.Get_intelligence();
+            Charm           = model.Attribute_Manager.Get_charm();
+            Willpower       = model.Attribute_Manager.Get_willpower();
 
             skills = new List<Skill_Class>();
             skill_limits = new List<int>();
-            foreach (Skill_Class Skill in Main_model.GetInstance().Skill_Manager.Get_skills())
+            foreach (Skill_Class Skill in model.Skill_Manager.Get_skills())
             {
                 skills.Add(Skill);
                 skill_limits.Add(new int());
             }
 
             force_skills = new List<Force_skill_class>();
-            foreach (Force_skill_class force_skill in Main_model.GetInstance().Force_skill_Manager.Get_Force_Skills())
+            foreach (Force_skill_class force_skill in model.Force_skill_Manager.Get_Force_Skills())
             {
                 force_skills.Add(force_skill);
             }
             
             combat_abilities = new List<All_abilities_template>();
-            foreach (Combat_abilities_template combat_ability in Main_model.GetInstance().Combat_ability_Manager.Get_abilities())
+            foreach (Combat_abilities_template combat_ability in model.Combat_ability_Manager.Get_abilities())
             {
                 combat_abilities.Add(combat_ability);
             }
 
             force_abilities = new List<All_abilities_template>();
-            foreach (Force_abilities_template force_ability in Main_model.GetInstance().Force_ability_Manager.Get_abilities())
+            foreach (Force_abilities_template force_ability in model.Force_ability_Manager.Get_abilities())
             {
                 force_abilities.Add(force_ability);          
             }
@@ -1405,7 +1405,7 @@ namespace Character_design
             jedi_feature        = new List<All_feature_template>();
             exp_feature         = new List<All_feature_template>();
             armour_feature      = new List<All_feature_template>();
-            foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_positive_features())
+            foreach (All_feature_template feature in model.Feature_Manager.Get_positive_features())
             {
                 positive_features.Add(feature);
                 switch(feature.ID)
@@ -1426,7 +1426,7 @@ namespace Character_design
             }
 
             negative_features = new List<All_feature_template>();
-            foreach (All_feature_template feature in Main_model.GetInstance().Feature_Manager.Get_negative_features())
+            foreach (All_feature_template feature in model.Feature_Manager.Get_negative_features())
             {
                 negative_features.Add(feature);
                 switch (feature.ID)
