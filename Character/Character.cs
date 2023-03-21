@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using SW_Character_creation;
 using Races_libs;
-using Skills_libs;
 using Age_status_libs;
 using Attribute_libs;
 using Range_libs;
 
 namespace Character_design
 {
+    [Serializable]
     public class Character : BaseViewModel_2
     {
         //private static Character Character_instance;
@@ -886,32 +886,6 @@ namespace Character_design
         }
 
 
-        /*
-        public static Character GetInstance()
-        {
-            if (Character_instance == null)
-            {
-                Character_instance = new Character();
-            } 
-            return Character_instance;
-        }
-        public static void OverWriteInstance()
-        {
-            if (Character_instance != null)
-            {
-                Character_instance = new Character() ;
-            }
-        }
-        public static bool CheckInstanceNotNull()
-        {
-            if (Character_instance != null)
-            {
-                return true;
-            }
-            return false;
-        }*/
-
-
 
         public Atribute_class Strength
         {
@@ -1355,6 +1329,7 @@ namespace Character_design
 
 
 
+        public Character() { ; }
         public Character(Main_model model)
         {
             Character_race  = model.Race_Manager.Get_Race_list()[0];
@@ -1385,13 +1360,13 @@ namespace Character_design
             }
             
             combat_abilities = new List<All_abilities_template>();
-            foreach (Combat_abilities_template combat_ability in model.Combat_ability_Manager.Get_abilities())
+            foreach (All_abilities_template combat_ability in model.Combat_ability_Manager.Get_abilities())
             {
                 combat_abilities.Add(combat_ability);
             }
 
             force_abilities = new List<All_abilities_template>();
-            foreach (Force_abilities_template force_ability in model.Force_ability_Manager.Get_abilities())
+            foreach (All_abilities_template force_ability in model.Force_ability_Manager.Get_abilities())
             {
                 force_abilities.Add(force_ability);          
             }
